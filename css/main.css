@@ -1,0 +1,10 @@
+.token.medium {
+    width: 1in;
+    height: 1in;
+}
+
+.token img {
+    display: block;
+    height: 1in;
+    margin: auto;
+}
