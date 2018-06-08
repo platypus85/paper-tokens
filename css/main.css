@@ -25,13 +25,4 @@
     margin: auto;
 }
 
-/* 
-.medium img {
-    width: 2in;
-    right: -50%;
-}
-
-.large img {
-    width: 3in;
-    right: -20%;
-} */
+.token .number {}
