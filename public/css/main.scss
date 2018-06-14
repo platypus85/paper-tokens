@@ -1,34 +1,20 @@
-
-    div.token{
-        page-break-inside: avoid;
-    }
-
-    .token {
-        border-radius: 50%;
-        position: relative;
-        overflow: hidden;
-        border: 1px solid #cecece;
-        display: inline-block;
-    }
-    
-    .token.medium {
+.token {
+    page-break-inside: avoid;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #cecece;
+    display: inline-block;
+    &.medium {
         width: 1in;
         height: 1in;
     }
-    
-    .token.large {
+    &.large {
         width: 2in;
         height: 2in;
     }
-    
-    .token img {
+    img {
         position: absolute;
-        /* top: -9999px;
-        bottom: -9999px;
-        width: 100%;
-        left: -9999px;
-        right: -9999px;
-        margin: auto; */
         max-width: 100%;
         max-height: 100%;
         height: auto;
@@ -38,8 +24,7 @@
         left: 0;
         right: 0;
     }
-    
-    .token .number {
+    .number {
         background: white;
         border: 1px solid black;
         position: absolute;
@@ -58,3 +43,4 @@
         line-height: 20px;
         font-family: 'Righteous', cursive;
     }
+}
