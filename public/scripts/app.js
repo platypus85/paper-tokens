@@ -11,10 +11,23 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var PaperTokensApp = function (_React$Component) {
     _inherits(PaperTokensApp, _React$Component);
 
-    function PaperTokensApp() {
+    function PaperTokensApp(props) {
         _classCallCheck(this, PaperTokensApp);
 
-        return _possibleConstructorReturn(this, (PaperTokensApp.__proto__ || Object.getPrototypeOf(PaperTokensApp)).apply(this, arguments));
+        var _this = _possibleConstructorReturn(this, (PaperTokensApp.__proto__ || Object.getPrototypeOf(PaperTokensApp)).call(this, props));
+
+        _this.state = {
+            tokens: [{
+                url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
+                size: "medium",
+                quantity: 2
+            }, {
+                url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
+                size: "medium",
+                quantity: 3
+            }]
+        };
+        return _this;
     }
 
     _createClass(PaperTokensApp, [{
@@ -23,6 +36,9 @@ var PaperTokensApp = function (_React$Component) {
             return React.createElement(
                 "div",
                 null,
+                React.createElement(Tokens, {
+                    tokens: this.state.tokens
+                }),
                 React.createElement(
                     "div",
                     { "class": "token medium" },
@@ -89,5 +105,36 @@ var PaperTokensApp = function (_React$Component) {
 
     return PaperTokensApp;
 }(React.Component);
+
+var Tokens = function Tokens(props) {
+    return React.createElement(
+        "div",
+        null,
+        props.tokens.length === 0 && React.createElement(
+            "p",
+            null,
+            "Please, add a creature to get started!"
+        ),
+        props.tokens.map(function (token) {
+            return React.createElement(Token, {
+                key: token.url,
+                token: token
+            });
+        })
+    );
+};
+
+var Token = function Token(props) {
+    return React.createElement(
+        "div",
+        { "class": "token " + props.token.size },
+        React.createElement("img", { src: props.token.url }),
+        React.createElement(
+            "div",
+            { "class": "number" },
+            props.token.quantity
+        )
+    );
+};
 
 ReactDOM.render(React.createElement(PaperTokensApp, null), document.getElementById('app'));

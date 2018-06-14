@@ -1,7 +1,29 @@
 class PaperTokensApp extends React.Component {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            tokens:  [
+                {
+                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
+                    size: "medium",
+                    quantity: 2
+                },
+                {
+                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
+                    size: "medium",
+                    quantity: 3
+                }
+            ]
+        }
+    }
+
     render(){
         return (
             <div>
+                <Tokens 
+                    tokens={this.state.tokens}
+                />
                 <div class="token medium">
                     <img src="https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg"/>
                     <div class="number">1</div>
@@ -30,5 +52,30 @@ class PaperTokensApp extends React.Component {
         );
     }
 }
+
+const Tokens = (props) =>{
+    return (
+        <div>
+            {props.tokens.length === 0 && <p>Please, add a creature to get started!</p>}
+            {
+                props.tokens.map((token) => (
+                <Token 
+                    key={token.url} 
+                    token={token}
+                />
+            ))
+            }
+        </div>
+    );
+};
+
+const Token = (props) =>{
+    return (
+        <div class={"token " + props.token.size}>
+            <img src={props.token.url}/>
+            <div class="number">{props.token.quantity}</div>
+        </div>
+    );
+};
 
 ReactDOM.render(<PaperTokensApp />, document.getElementById('app'));
