@@ -1,0 +1,12 @@
+{
+  "name": "paper-tokens",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/platypus85/paper-tokens.git",
+  "author": "Alberto Camillo <info@albertocamillo.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
