@@ -35,3 +35,6 @@ Use the command `babel src/app.js --out-file=public/scripts/app.js --presets=env
 
 ### To install node_modules
 Use the command `yarn install`
+
+## VS Code extensions
+Use [Live Sass](https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass) to compile Sass files.
