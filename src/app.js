@@ -5,724 +5,34 @@ class PaperTokensApp extends React.Component {
         this.state = {
             tokens:  [
                 {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
                     url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
                     size: SizeEnum.MEDIUM,
+                    name: "Orc",
                     quantity: 2
                 },
                 {
                     url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
                     size: SizeEnum.MEDIUM,
+                    name: "Aarakocra",
                     quantity: 3
                 },
                 {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
+                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/18/287/1000/1000/636379803928245506.jpeg",
+                    size: SizeEnum.TINY,
+                    name: "Homunculus",
                     quantity: 4
                 },
                 {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
+                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/243/1000/1000/636252767318152303.jpeg",
                     size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
+                    name: "Clay Golem",
                     quantity: 7
                 },
                 {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
                     url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
                     size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
+                    name: "Beholder",
                     quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 7
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 7
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 7
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 7
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 7
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 7
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 7
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 7
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 7
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 7
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 5
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 3
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 1
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    quantity: 10
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 2
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    quantity: 7
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/264/422/1000/1000/636595807919465152.png",
-                    size: SizeEnum.LARGE,
-                    quantity: 8
                 }
             ]
         }
@@ -740,10 +50,12 @@ class PaperTokensApp extends React.Component {
 }
 
 const SizeEnum = {
+    TINY: 0,
     SMALL: 1,
     MEDIUM: 2,
     LARGE: 3,
     properties: {
+      0: {name: "tiny", value: 0, code: "T"},
       1: {name: "small", value: 1, code: "S"},
       2: {name: "medium", value: 2, code: "M"},
       3: {name: "large", value: 3, code: "L"}
@@ -758,8 +70,8 @@ const Tokens = (props) =>{
                 props.tokens
                 .sort((a, b) => SizeEnum.properties[a.size].value - SizeEnum.properties[b.size].value)
                 .map((token, i) => (
-                <Token 
-                    key={i} 
+                <TokenGroup 
+                    key={token.name+i} 
                     token={token}
                 />
             ))
@@ -768,13 +80,27 @@ const Tokens = (props) =>{
     );
 };
 
-const Token = (props) =>{
+const createPawnsList = (token) => {
+    let pawnsList = []
+    for (var i = 1; i <= token.quantity; i++) {
+        pawnsList.push(
+        <div className={"token " + SizeEnum.properties[token.size].name}>
+            <img src={token.url}/>
+            <div className="number">{i}</div>
+        </div>    
+      )
+    }
+    return pawnsList
+}
+
+const TokenGroup = (props) =>{
     return (
-        <div className={"token " + SizeEnum.properties[props.token.size].name}>
-            <img src={props.token.url}/>
-            <div className="number">{props.token.quantity}</div>
+        <div className="tokenContainer">
+            {createPawnsList(props.token)}
         </div>
     );
 };
+
+
 
 ReactDOM.render(<PaperTokensApp />, document.getElementById('app'));
