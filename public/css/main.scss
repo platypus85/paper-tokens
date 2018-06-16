@@ -1,6 +1,5 @@
-.tokenContainer {
-    display: inline-block;
-    .token {
+.token {
+        display: inline-block;
         page-break-inside: avoid;
         border-radius: 50%;
         position: relative;
@@ -50,4 +49,3 @@
             font-family: 'Righteous', cursive;
         }
     }
-}

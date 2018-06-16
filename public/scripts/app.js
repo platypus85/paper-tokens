@@ -88,20 +88,17 @@ var Tokens = function Tokens(props) {
         props.tokens.sort(function (a, b) {
             return SizeEnum.properties[a.size].value - SizeEnum.properties[b.size].value;
         }).map(function (token, i) {
-            return React.createElement(TokenGroup, {
-                key: token.name + i,
-                token: token
-            });
+            return createPawnsList(token, i);
         })
     );
 };
 
-var createPawnsList = function createPawnsList(token) {
+var createPawnsList = function createPawnsList(token, i) {
     var pawnsList = [];
     for (var i = 1; i <= token.quantity; i++) {
         pawnsList.push(React.createElement(
             "div",
-            { className: "token " + SizeEnum.properties[token.size].name },
+            { key: token.name + i, className: "token " + SizeEnum.properties[token.size].name },
             React.createElement("img", { src: token.url }),
             React.createElement(
                 "div",
@@ -111,14 +108,6 @@ var createPawnsList = function createPawnsList(token) {
         ));
     }
     return pawnsList;
-};
-
-var TokenGroup = function TokenGroup(props) {
-    return React.createElement(
-        "div",
-        { className: "tokenContainer" },
-        createPawnsList(props.token)
-    );
 };
 
 ReactDOM.render(React.createElement(PaperTokensApp, null), document.getElementById('app'));

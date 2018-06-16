@@ -70,21 +70,18 @@ const Tokens = (props) =>{
                 props.tokens
                 .sort((a, b) => SizeEnum.properties[a.size].value - SizeEnum.properties[b.size].value)
                 .map((token, i) => (
-                <TokenGroup 
-                    key={token.name+i} 
-                    token={token}
-                />
+                createPawnsList(token,i)
             ))
             }
         </div>
     );
 };
 
-const createPawnsList = (token) => {
+const createPawnsList = (token,i) => {
     let pawnsList = []
     for (var i = 1; i <= token.quantity; i++) {
         pawnsList.push(
-        <div className={"token " + SizeEnum.properties[token.size].name}>
+        <div key={token.name+i} className={"token " + SizeEnum.properties[token.size].name}>
             <img src={token.url}/>
             <div className="number">{i}</div>
         </div>    
@@ -92,14 +89,6 @@ const createPawnsList = (token) => {
     }
     return pawnsList
 }
-
-const TokenGroup = (props) =>{
-    return (
-        <div className="tokenContainer">
-            {createPawnsList(props.token)}
-        </div>
-    );
-};
 
 
 
