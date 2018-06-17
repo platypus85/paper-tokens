@@ -5,34 +5,52 @@ class PaperTokensApp extends React.Component {
         this.state = {
             tokens:  [
                 {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/301/1000/1000/636252771691385727.jpeg",
-                    size: SizeEnum.MEDIUM,
-                    name: "Orc",
-                    quantity: 2
-                },
-                {
                     url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/8/442/1000/1000/636306375308939571.jpeg",
                     size: SizeEnum.MEDIUM,
                     name: "Aarakocra",
+                    quantity: 5
+                },
+                {
+                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/7/7c/Albino_dwarf-5e.png",
+                    size: SizeEnum.MEDIUM,
+                    name: "Albino Dwarf",
+                    quantity: 6
+                },
+                {
+                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/738/1000/1000/636395097043050587.png",
+                    size: SizeEnum.MEDIUM,
+                    name: "Aldani",
+                    quantity: 5
+                },
+                {
+                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/740/1000/1000/636395097245241750.png",
+                    size: SizeEnum.SMALL,
+                    name: "Almiraj",
+                    quantity: 5
+                },
+                {
+                    url: "https://78.media.tumblr.com/95bdc5ee72b8eca66d8ca332cc4cb084/tumblr_inline_p84b0sigqf1r0zz7o_500.jpg",
+                    size: SizeEnum.MEDIUM,
+                    name: "Ape",
+                    quantity: 5
+                },
+                {
+                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/743/1000/1000/636395097479889039.png",
+                    size: SizeEnum.MEDIUM,
+                    name: "Artus Cimber",
+                    quantity: 1
+                },
+                {
+                    url: "https://vignette.wikia.nocookie.net/pathfinderenchanter/images/c/c0/114.jpg",
+                    size: SizeEnum.LARGE,
+                    name: "Assassin Vine",
                     quantity: 3
                 },
                 {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/18/287/1000/1000/636379803928245506.jpeg",
-                    size: SizeEnum.TINY,
-                    name: "Homunculus",
-                    quantity: 4
-                },
-                {
-                    url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/0/243/1000/1000/636252767318152303.jpeg",
+                    url: "http://images.fineartamerica.com/images-medium-large/artwork-of-an-extinct-terror-bird-that-john-sibbick.jpg",
                     size: SizeEnum.LARGE,
-                    name: "Clay Golem",
-                    quantity: 7
-                },
-                {
-                    url: "https://vignette.wikia.nocookie.net/forgottenrealms/images/2/2c/Monster_Manual_5e_-_Beholder_-_p28.jpg",
-                    size: SizeEnum.LARGE,
-                    name: "Beholder",
-                    quantity: 4
+                    name: "Axe Beak",
+                    quantity: 6
                 }
             ]
         }
