@@ -41,6 +41,24 @@ var PaperTokensApp = function (_React$Component) {
                 name: "Ape",
                 startFrom: 1,
                 quantity: 3
+            }, {
+                url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/775/1000/1000/636395101744474687.png",
+                size: SizeEnum.MEDIUM,
+                name: "Yellow Musk Creeper",
+                startFrom: 1,
+                quantity: 1
+            }, {
+                url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/773/1000/1000/636395101542518419.png",
+                size: SizeEnum.MEDIUM,
+                name: "Yellow Musk Zombie",
+                startFrom: 1,
+                quantity: 3
+            }, {
+                url: "http://www.dmsguild.com/images/8957/193701.jpg",
+                size: SizeEnum.MEDIUM,
+                name: "Guard",
+                startFrom: 1,
+                quantity: 2
             }]
         };
         return _this;
