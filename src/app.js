@@ -2,6 +2,7 @@ class PaperTokensApp extends React.Component {
 
     constructor(props){
         super(props);
+        this.removeToken = this.removeToken.bind(this);
         this.state = {
             tokens:  [
                 {
@@ -53,7 +54,6 @@ class PaperTokensApp extends React.Component {
                     startFrom: 1,
                     quantity: 2
                 }
-                
             ]
         }
     }
@@ -61,13 +61,61 @@ class PaperTokensApp extends React.Component {
     render(){
         return (
             <div>
-                <Tokens 
+                <Table
                     tokens={this.state.tokens}
-                />
+                    onRemoveToken={this.removeToken}/>
+                <Tokens tokens={this.state.tokens}/>
             </div>
         );
     }
+
+    removeToken(token){
+        this.setState((prevState) => ({
+          tokens: prevState
+            .tokens
+            .filter((p) => p !== token)
+        }))
+    }
+    
 }
+
+const Table = (props) => {
+    return(
+        <div>
+             <table id="tokens-table">
+                <tbody>
+                    {props.tokens.map((token, index) => (
+                    <tr key={index}>
+                        <td className="token-image" ><img alt={token.image} src={token.url}/></td>
+                        <td className="token-name">
+                            {token.name}
+                        </td>
+                        <td className="token-qty">
+                            <input type="number" name="quantity" defaultValue={token.quantity} min="1"/>
+                        </td>
+                        <td>
+                            <div className="token-size">
+                                <select value={SizeEnum.properties[token.size].name}>
+                                    <option value="tiny">Tiny</option>
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                    <option value="huge">Huge</option>
+                                    <option value="gargantuan">Gargantuan</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td className="token-startFrom">
+                            <input type="number" name="startFrom" defaultValue={token.startFrom} min="1"/>
+                        </td>
+                        <td className="delete"><button onClick={() => props.onRemoveToken(token)}>Remove</button></td>
+                    </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
+    )
+  }
 
 const SizeEnum = {
     TINY: 0,
@@ -82,7 +130,7 @@ const SizeEnum = {
     }
   };
 
-const Tokens = (props) =>{
+const Tokens = (props) => {
     return (
         <div>
             {props.tokens.length === 0 && <p>Please, add a creature to get started!</p>}
@@ -96,6 +144,8 @@ const Tokens = (props) =>{
         </div>
     );
 };
+
+
 
 const createPawnsList = (token,i) => {
     let pawnsList = []

@@ -48,3 +48,13 @@
             font-family: 'Righteous', cursive;
         }
     }
+
+    #tokens-table{
+        td{
+            &.token-image{
+                img{
+                    max-width: 80px;
+                }
+            }
+        }
+    }

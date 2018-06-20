@@ -16,6 +16,7 @@ var PaperTokensApp = function (_React$Component) {
 
         var _this = _possibleConstructorReturn(this, (PaperTokensApp.__proto__ || Object.getPrototypeOf(PaperTokensApp)).call(this, props));
 
+        _this.removeToken = _this.removeToken.bind(_this);
         _this.state = {
             tokens: [{
                 url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/16/488/1000/1000/636376304583147024.jpeg",
@@ -70,15 +71,121 @@ var PaperTokensApp = function (_React$Component) {
             return React.createElement(
                 "div",
                 null,
-                React.createElement(Tokens, {
-                    tokens: this.state.tokens
-                })
+                React.createElement(Table, {
+                    tokens: this.state.tokens,
+                    onRemoveToken: this.removeToken }),
+                React.createElement(Tokens, { tokens: this.state.tokens })
             );
+        }
+    }, {
+        key: "removeToken",
+        value: function removeToken(token) {
+            this.setState(function (prevState) {
+                return {
+                    tokens: prevState.tokens.filter(function (p) {
+                        return p !== token;
+                    })
+                };
+            });
         }
     }]);
 
     return PaperTokensApp;
 }(React.Component);
+
+var Table = function Table(props) {
+    return React.createElement(
+        "div",
+        null,
+        React.createElement(
+            "table",
+            { id: "tokens-table" },
+            React.createElement(
+                "tbody",
+                null,
+                props.tokens.map(function (token, index) {
+                    return React.createElement(
+                        "tr",
+                        { key: index },
+                        React.createElement(
+                            "td",
+                            { className: "token-image" },
+                            React.createElement("img", { alt: token.image, src: token.url })
+                        ),
+                        React.createElement(
+                            "td",
+                            { className: "token-name" },
+                            token.name
+                        ),
+                        React.createElement(
+                            "td",
+                            { className: "token-qty" },
+                            React.createElement("input", { type: "number", name: "quantity", defaultValue: token.quantity, min: "1" })
+                        ),
+                        React.createElement(
+                            "td",
+                            null,
+                            React.createElement(
+                                "div",
+                                { className: "token-size" },
+                                React.createElement(
+                                    "select",
+                                    { value: SizeEnum.properties[token.size].name },
+                                    React.createElement(
+                                        "option",
+                                        { value: "tiny" },
+                                        "Tiny"
+                                    ),
+                                    React.createElement(
+                                        "option",
+                                        { value: "small" },
+                                        "Small"
+                                    ),
+                                    React.createElement(
+                                        "option",
+                                        { value: "medium" },
+                                        "Medium"
+                                    ),
+                                    React.createElement(
+                                        "option",
+                                        { value: "large" },
+                                        "Large"
+                                    ),
+                                    React.createElement(
+                                        "option",
+                                        { value: "huge" },
+                                        "Huge"
+                                    ),
+                                    React.createElement(
+                                        "option",
+                                        { value: "gargantuan" },
+                                        "Gargantuan"
+                                    )
+                                )
+                            )
+                        ),
+                        React.createElement(
+                            "td",
+                            { className: "token-startFrom" },
+                            React.createElement("input", { type: "number", name: "startFrom", defaultValue: token.startFrom, min: "1" })
+                        ),
+                        React.createElement(
+                            "td",
+                            { className: "delete" },
+                            React.createElement(
+                                "button",
+                                { onClick: function onClick() {
+                                        return props.onRemoveToken(token);
+                                    } },
+                                "Remove"
+                            )
+                        )
+                    );
+                })
+            )
+        )
+    );
+};
 
 var SizeEnum = {
     TINY: 0,
