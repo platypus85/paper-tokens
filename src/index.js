@@ -124,7 +124,7 @@ const Table = (props) => {
             .map((token, index) => (
               <tr key={index}>
                 <td className="token-image">
-                  <div className={"token " + SizeEnum.properties[token.size].name}>
+                  <div className="token medium">
                     <img alt={token.image} src={token.url}/>
                   </div>
                 </td>

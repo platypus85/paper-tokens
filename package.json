@@ -6,15 +6,19 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development"
   },
-  "keywords": [],
+  "keywords": ["paper","tokens","d&d","miniatures"],
   "babel": {
     "presets": [
       "env",
       "react",
       "stage-2"
     ]
+  },
+  "engines": {
+    "node": "8.11.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
