@@ -258,16 +258,20 @@ var Tokens = function Tokens(props) {
         props.tokens.sort(function (a, b) {
             return SizeEnum.properties[a.size].value - SizeEnum.properties[b.size].value;
         }).map(function (token, i) {
-            return createPawnsList(token, i);
+            return createTokensList(token, i);
         })
     );
 };
 
-var createPawnsList = function createPawnsList(token, i) {
+var createTokensList = function createTokensList(token, i) {
     var pawnsList = [];
-    var start = token.startFrom;
-    var end = start + token.quantity;
+    var start = parseInt(token.startFrom);
+    var end = start + parseInt(token.quantity);
+    console.log("start", start);
+    console.log("token.quantity", token.quantity);
+    console.log("end", end);
     for (var i = start; i < end; i++) {
+        console.log("i", i);
         pawnsList.push(React.createElement(
             "div",
             { key: token.name + i, className: "token " + SizeEnum.properties[token.size].name },
