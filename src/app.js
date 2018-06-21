@@ -5,11 +5,14 @@ class PaperTokensApp extends React.Component {
         this.removeToken = this
             .removeToken
             .bind(this);
-        this.changeSize = this
-            .changeSize
+        this.updateSize = this
+            .updateSize
             .bind(this);
         this.updateTokenQuantity = this
             .updateTokenQuantity
+            .bind(this);
+        this.updateTokenStartFrom = this
+            .updateTokenStartFrom
             .bind(this);
         this.state = {
             tokens: [
@@ -49,8 +52,9 @@ class PaperTokensApp extends React.Component {
                 <Table
                     tokens={this.state.tokens}
                     onRemoveToken={this.removeToken}
-                    onChangeSize={this.changeSize}
-                    onUpdateTokenQuantity={this.updateTokenQuantity}/>
+                    onupdateSize={this.updateSize}
+                    onUpdateTokenQuantity={this.updateTokenQuantity}
+                    onUpdateTokenStartFrom={this.updateTokenStartFrom}/>
                 <Tokens tokens={this.state.tokens}/>
             </div>
         );
@@ -64,7 +68,7 @@ class PaperTokensApp extends React.Component {
         }))
     }
 
-    changeSize(token, s) {
+    updateSize(token, s) {
         let updatedSizeTokens = this
             .state
             .tokens
@@ -93,6 +97,20 @@ class PaperTokensApp extends React.Component {
         this.setState({tokens: updatedQtyTokens})
     }
 
+    updateTokenStartFrom(token, sf) {
+        console.log(sf)
+        let updatedStartFrom = this
+            .state
+            .tokens
+            .slice();
+        updatedStartFrom.forEach((t, index) => {
+            if (t === token) {
+                t.startFrom = sf;
+            }
+        });
+
+        this.setState({tokens: updatedStartFrom})
+    }
 }
 
 const Table = (props) => {
@@ -104,7 +122,11 @@ const Table = (props) => {
                         .tokens
                         .map((token, index) => (
                             <tr key={index}>
-                                <td className="token-image"><img alt={token.image} src={token.url}/></td>
+                                <td className="token-image">
+                                    <div className={"token " + SizeEnum.properties[token.size].name}>
+                                        <img alt={token.image} src={token.url}/>
+                                    </div>
+                                </td>
                                 <td className="token-name">
                                     {token.name}
                                 </td>
@@ -120,7 +142,7 @@ const Table = (props) => {
                                     <div className="token-size">
                                         <select
                                             value={SizeEnum.properties[token.size].value}
-                                            onChange={(event) => props.onChangeSize(token, event.target.value)}>
+                                            onChange={(event) => props.onupdateSize(token, event.target.value)}>
                                             <option value="0">Tiny</option>
                                             <option value="1">Small</option>
                                             <option value="2">Medium</option>
@@ -131,7 +153,12 @@ const Table = (props) => {
                                     </div>
                                 </td>
                                 <td className="token-startFrom">
-                                    <input type="number" name="startFrom" defaultValue={token.startFrom} min="1"/>
+                                    <input
+                                        type="number"
+                                        onChange={(event) => props.onUpdateTokenStartFrom(token, event.target.value)}
+                                        name="startFrom"
+                                        defaultValue={token.startFrom}
+                                        min="1"/>
                                 </td>
                                 <td className="delete">
                                     <button onClick={() => props.onRemoveToken(token)}>Remove</button>

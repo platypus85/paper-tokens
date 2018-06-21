@@ -17,58 +17,34 @@ var PaperTokensApp = function (_React$Component) {
         var _this = _possibleConstructorReturn(this, (PaperTokensApp.__proto__ || Object.getPrototypeOf(PaperTokensApp)).call(this, props));
 
         _this.removeToken = _this.removeToken.bind(_this);
-        _this.changeSize = _this.changeSize.bind(_this);
+        _this.updateSize = _this.updateSize.bind(_this);
         _this.updateTokenQuantity = _this.updateTokenQuantity.bind(_this);
+        _this.updateTokenStartFrom = _this.updateTokenStartFrom.bind(_this);
         _this.state = {
             tokens: [{
-                url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/16/488/1000/1000/636376304583147024.jpeg",
+                url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/16/488/1000/1000/6363763" + "04583147024.jpeg",
                 size: SizeEnum.LARGE,
                 name: "Plesiosaurus",
                 startFrom: 1,
                 quantity: 1
-                // }, 
-                // {
-                //     url: "https://orig00.deviantart.net/cc4b/f/2014/205/d/5/pzo1012dustscorpion_by_critical_dean-d7s2la0.jpg",
-                //     size: SizeEnum.LARGE,
-                //     name: "Giant Scorpion",
-                //     startFrom: 1,
-                //     quantity: 1
-                // },
-                // {
-                //     url: "https://i.redditmedia.com/KU0I7xPrR5InYa5q3UlxOweUofi66o4sQ7DAMS-PgCQ.jpg?w=320&s=7fadb6fa1d2b85b17aeb7d33c9c92890",
-                //     size: SizeEnum.LARGE,
-                //     name: "Crocodile",
-                //     startFrom: 1,
-                //     quantity: 2
-                // },
-                // {
-                //     url: "https://78.media.tumblr.com/95bdc5ee72b8eca66d8ca332cc4cb084/tumblr_inline_p84b0sigqf1r0zz7o_500.jpg",
-                //     size: SizeEnum.MEDIUM,
-                //     name: "Ape",
-                //     startFrom: 1,
-                //     quantity: 3
-                // },
-                // {
-                //     url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/775/1000/1000/636395101744474687.png",
-                //     size: SizeEnum.MEDIUM,
-                //     name: "Yellow Musk Creeper",
-                //     startFrom: 1,
-                //     quantity: 1
-                // },
-                // {
-                //     url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/773/1000/1000/636395101542518419.png",
-                //     size: SizeEnum.MEDIUM,
-                //     name: "Yellow Musk Zombie",
-                //     startFrom: 1,
-                //     quantity: 3
-                // },
-                // {
-                //     url: "http://www.dmsguild.com/images/8957/193701.jpg",
-                //     size: SizeEnum.MEDIUM,
-                //     name: "Guard",
-                //     startFrom: 1,
-                //     quantity: 2
-                // }
+                // }, {     url:
+                // "https://orig00.deviantart.net/cc4b/f/2014/205/d/5/pzo1012dustscorpion_by_cri
+                // t ical_dean-d7s2la0.jpg",     size: SizeEnum.LARGE,     name: "Giant
+                // Scorpion",     startFrom: 1,     quantity: 1 }, {     url:
+                // "https://i.redditmedia.com/KU0I7xPrR5InYa5q3UlxOweUofi66o4sQ7DAMS-PgCQ.jpg?w=
+                // 3 20&s=7fadb6fa1d2b85b17aeb7d33c9c92890",     size: SizeEnum.LARGE, name:
+                // "Crocodile",     startFrom: 1,     quantity: 2 }, {     url:
+                // "https://78.media.tumblr.com/95bdc5ee72b8eca66d8ca332cc4cb084/tumblr_inline_p
+                // 8 4b0sigqf1r0zz7o_500.jpg",     size: SizeEnum.MEDIUM,     name: "Ape",
+                // startFrom: 1,     quantity: 3 }, {     url:
+                // "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/775/1000/1000/636
+                // 3 95101744474687.png",     size: SizeEnum.MEDIUM,     name: "Yellow Musk
+                // Creeper",     startFrom: 1,     quantity: 1 }, {     url:
+                // "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/773/1000/1000/636
+                // 3 95101542518419.png",     size: SizeEnum.MEDIUM,     name: "Yellow Musk
+                // Zombie",     startFrom: 1,     quantity: 3 }, {     url:
+                // "http://www.dmsguild.com/images/8957/193701.jpg",     size: SizeEnum.MEDIUM,
+                // name: "Guard",     startFrom: 1,     quantity: 2 }
             }]
         };
         return _this;
@@ -83,8 +59,9 @@ var PaperTokensApp = function (_React$Component) {
                 React.createElement(Table, {
                     tokens: this.state.tokens,
                     onRemoveToken: this.removeToken,
-                    onChangeSize: this.changeSize,
-                    onUpdateTokenQuantity: this.updateTokenQuantity }),
+                    onupdateSize: this.updateSize,
+                    onUpdateTokenQuantity: this.updateTokenQuantity,
+                    onUpdateTokenStartFrom: this.updateTokenStartFrom }),
                 React.createElement(Tokens, { tokens: this.state.tokens })
             );
         }
@@ -100,8 +77,8 @@ var PaperTokensApp = function (_React$Component) {
             });
         }
     }, {
-        key: "changeSize",
-        value: function changeSize(token, s) {
+        key: "updateSize",
+        value: function updateSize(token, s) {
             var updatedSizeTokens = this.state.tokens.slice();
             updatedSizeTokens.forEach(function (t, index) {
                 if (t === token) {
@@ -123,6 +100,19 @@ var PaperTokensApp = function (_React$Component) {
             });
 
             this.setState({ tokens: updatedQtyTokens });
+        }
+    }, {
+        key: "updateTokenStartFrom",
+        value: function updateTokenStartFrom(token, sf) {
+            console.log(sf);
+            var updatedStartFrom = this.state.tokens.slice();
+            updatedStartFrom.forEach(function (t, index) {
+                if (t === token) {
+                    t.startFrom = sf;
+                }
+            });
+
+            this.setState({ tokens: updatedStartFrom });
         }
     }]);
 
@@ -146,7 +136,11 @@ var Table = function Table(props) {
                         React.createElement(
                             "td",
                             { className: "token-image" },
-                            React.createElement("img", { alt: token.image, src: token.url })
+                            React.createElement(
+                                "div",
+                                { className: "token " + SizeEnum.properties[token.size].name },
+                                React.createElement("img", { alt: token.image, src: token.url })
+                            )
                         ),
                         React.createElement(
                             "td",
@@ -156,9 +150,14 @@ var Table = function Table(props) {
                         React.createElement(
                             "td",
                             { className: "token-qty" },
-                            React.createElement("input", { type: "number", onChange: function onChange(event) {
+                            React.createElement("input", {
+                                type: "number",
+                                onChange: function onChange(event) {
                                     return props.onUpdateTokenQuantity(token, event.target.value);
-                                }, name: "quantity", defaultValue: token.quantity, min: "1" })
+                                },
+                                name: "quantity",
+                                defaultValue: token.quantity,
+                                min: "1" })
                         ),
                         React.createElement(
                             "td",
@@ -171,7 +170,7 @@ var Table = function Table(props) {
                                     {
                                         value: SizeEnum.properties[token.size].value,
                                         onChange: function onChange(event) {
-                                            return props.onChangeSize(token, event.target.value);
+                                            return props.onupdateSize(token, event.target.value);
                                         } },
                                     React.createElement(
                                         "option",
@@ -209,7 +208,14 @@ var Table = function Table(props) {
                         React.createElement(
                             "td",
                             { className: "token-startFrom" },
-                            React.createElement("input", { type: "number", name: "startFrom", defaultValue: token.startFrom, min: "1" })
+                            React.createElement("input", {
+                                type: "number",
+                                onChange: function onChange(event) {
+                                    return props.onUpdateTokenStartFrom(token, event.target.value);
+                                },
+                                name: "startFrom",
+                                defaultValue: token.startFrom,
+                                min: "1" })
                         ),
                         React.createElement(
                             "td",
@@ -237,12 +243,36 @@ var SizeEnum = {
     HUGE: 4,
     GARGANTUAN: 5,
     properties: {
-        0: { name: "tiny", value: 0, code: "T" },
-        1: { name: "small", value: 1, code: "S" },
-        2: { name: "medium", value: 2, code: "M" },
-        3: { name: "large", value: 3, code: "L" },
-        4: { name: "huge", value: 4, code: "H" },
-        5: { name: "gargantuan", value: 5, code: "G" }
+        0: {
+            name: "tiny",
+            value: 0,
+            code: "T"
+        },
+        1: {
+            name: "small",
+            value: 1,
+            code: "S"
+        },
+        2: {
+            name: "medium",
+            value: 2,
+            code: "M"
+        },
+        3: {
+            name: "large",
+            value: 3,
+            code: "L"
+        },
+        4: {
+            name: "huge",
+            value: 4,
+            code: "H"
+        },
+        5: {
+            name: "gargantuan",
+            value: 5,
+            code: "G"
+        }
     }
 };
 
@@ -267,14 +297,13 @@ var createTokensList = function createTokensList(token, i) {
     var pawnsList = [];
     var start = parseInt(token.startFrom);
     var end = start + parseInt(token.quantity);
-    console.log("start", start);
-    console.log("token.quantity", token.quantity);
-    console.log("end", end);
     for (var i = start; i < end; i++) {
         console.log("i", i);
         pawnsList.push(React.createElement(
             "div",
-            { key: token.name + i, className: "token " + SizeEnum.properties[token.size].name },
+            {
+                key: token.name + i,
+                className: "token " + SizeEnum.properties[token.size].name },
             React.createElement("img", { src: token.url }),
             React.createElement(
                 "div",
