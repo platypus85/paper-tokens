@@ -7,7 +7,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development"
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "heroku-postbuild": "npm run build",
+    "prebuild": "npm run build:clean"
   },
   "keywords": ["paper","tokens","d&d","miniatures"],
   "babel": {
