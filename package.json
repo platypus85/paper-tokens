@@ -7,6 +7,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "./node_modules/.bin/webpack --config webpack.conf.js",
     "start": "webpack-dev-server --config ./webpack.config.js --mode development",
     "heroku-postbuild": "npm run build",
     "prebuild": "npm run build:clean"
