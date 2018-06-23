@@ -25,7 +25,7 @@ class App extends Component {
     this.updateTokenName = this
       .updateTokenName
       .bind(this);
-    this.state = { 
+    this.state = {
       tokens: []
       /*tokens: [
         {
@@ -77,7 +77,7 @@ class App extends Component {
           quantity: 3
         }
       ]*/
-      
+
     }
   }
 
@@ -211,19 +211,22 @@ class App extends Component {
 const Table = (props) => {
   return (
     <div>
-      <table id="tokens-table">
+      <table
+        className={props.tokens.length > 0
+        ? ""
+        : "hidden"}
+        id="tokens-table">
         <thead>
           <tr>
-            <th>Thumb</th>
+            <th>Image</th>
             <th>Name</th>
-            <th>Size</th>
             <th>Quantity</th>
-            <th>Start from</th>
+            <th>Size</th>
+            <th>Count Start</th>
             <th>Actions</th>
           </tr>
         </thead>
-        <tfoot>
-        </tfoot>
+        <tfoot></tfoot>
         <tbody>
           {props
             .tokens
@@ -278,7 +281,7 @@ const Table = (props) => {
             ))}
         </tbody>
       </table>
-      {props.tokens.length > 0 && <button onClick={() => props.onRemoveAllTokens()}>Remove All</button>}
+      {props.tokens.length > 0 && <button id="remove-all" onClick={() => props.onRemoveAllTokens()}>Remove All</button>}
     </div>
   )
 }

@@ -73,7 +73,8 @@
 
 @media print {
     #tokens-table,
-    #tokens-form {
+    #tokens-form,
+    button#remove-all {
         display: none;
     }
 }
