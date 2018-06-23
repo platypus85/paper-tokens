@@ -7,6 +7,9 @@ class App extends Component {
     this.removeToken = this
       .removeToken
       .bind(this);
+    this.removeAllTokens = this
+      .removeAllTokens
+      .bind(this);
     this.updateSize = this
       .updateSize
       .bind(this);
@@ -67,6 +70,12 @@ class App extends Component {
           name: "Guard",
           startFrom: 1,
           quantity: 2
+        }, {
+          url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/773/1000/1000/636395101542518419.png",
+          size: SizeEnum.MEDIUM,
+          name: "Yellow Musk Zombie",
+          startFrom: 1,
+          quantity: 3
         }
       ]
       */
@@ -97,6 +106,7 @@ class App extends Component {
         <Table
           tokens={this.state.tokens}
           onRemoveToken={this.removeToken}
+          onRemoveAllTokens={this.removeAllTokens}
           onUpdateSize={this.updateSize}
           onUpdateTokenQuantity={this.updateTokenQuantity}
           onUpdateTokenName={this.updateTokenName}
@@ -112,6 +122,10 @@ class App extends Component {
         .tokens
         .filter((p) => p !== token)
     }))
+  }
+
+  removeAllTokens() {
+    this.setState((prevState) => ({tokens: []}))
   }
 
   updateSize(token, s) {
@@ -157,7 +171,6 @@ class App extends Component {
   }
 
   updateTokenName(token, n) {
-
     let updatedNameTokens = this
       .state
       .tokens
@@ -172,7 +185,6 @@ class App extends Component {
   }
 
   handleAddToken(tokenUrl) {
-
     if (!tokenUrl || !ValidURL(tokenUrl)) {
       return 'Enter a valid URL';
     } else if (this.state.tokens.some(token => token.url === tokenUrl)) {
@@ -254,6 +266,11 @@ const Table = (props) => {
             ))}
         </tbody>
       </table>
+      <button
+        className={props.tokens
+        ? ''
+        : 'hidden'}
+        onClick={() => props.onRemoveAllTokens()}>Remove All</button>
     </div>
   )
 }
@@ -311,8 +328,7 @@ const ValidURL = (url) => {
 const Tokens = (props) => {
   return (
     <div>
-    {
-      props.tokens.length === 0 && <p>Please, add a link to a creature image to get started!</p>}
+      {props.tokens.length === 0 && <p>Please, add a link to a creature image to get started!</p>}
       {createTokensList(props.tokens)}
     </div>
   );
@@ -320,10 +336,8 @@ const Tokens = (props) => {
 
 const createTokensList = (tokens) => {
   let pawnsList = [];
-  const tks = tokens;
-  tks
-  .sort((a, b) => SizeEnum.properties[a.size].value - SizeEnum.properties[b.size].value)
-  .map((token, i) => {
+  var tks = tokens.slice();
+  tks.sort((a, b) => SizeEnum.properties[a.size].value - SizeEnum.properties[b.size].value).forEach((token, i) => {
     const start = parseInt(token.startFrom, 10);
     const end = start + parseInt(token.quantity, 10);
     for (i = start; i < end; i++) {
@@ -339,24 +353,6 @@ const createTokensList = (tokens) => {
   })
   return pawnsList
 }
-
-// const createTokensList = (token, i) => {
-//   let pawnsList = []
-//   const start = parseInt(token.startFrom, 10);
-//   const end = start + parseInt(token.quantity, 10);
-//   for (i = start; i < end; i++) {
-//     pawnsList.push(
-//       <div
-//         key={token.name + i}
-//         className={"token " + SizeEnum.properties[token.size].name}>
-//         <img alt={token.name} src={token.url}/>
-//         <div className="number">{i}</div>
-//       </div>
-//     )
-//   }
-//   pawnsList.sort((a, b) => SizeEnum.properties[a.size].value - SizeEnum.properties[b.size].value)
-//   return pawnsList
-// }
 
 class AddToken extends Component {
   constructor(props) {
@@ -390,7 +386,7 @@ class AddToken extends Component {
     return (
       <div>
         {this.state.error && <p>{this.state.error}</p>}
-        <form id="form-tokens" onSubmit={this.handleAddToken}>
+        <form autoComplete="off" id="tokens-form" onSubmit={this.handleAddToken}>
           <input type="text" name="tokenUrl"/>
           <button>Add Token</button>
         </form>

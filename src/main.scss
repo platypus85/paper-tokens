@@ -1,3 +1,7 @@
+.hidden{
+    display: none;
+}
+
 .token {
     display: inline-block;
     page-break-inside: avoid;
@@ -65,7 +69,7 @@
 }
 
 @media print {
-    #tokens-table, #form-tokens {
+    #tokens-table, #tokens-form{
         display: none;
     }
 }
