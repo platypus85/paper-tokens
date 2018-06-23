@@ -25,10 +25,9 @@ class App extends Component {
     this.updateTokenName = this
       .updateTokenName
       .bind(this);
-    this.state = {
+    this.state = { 
       tokens: []
-      /*
-      tokens: [
+      /*tokens: [
         {
           url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/16/488/1000/1000/6363763" +
               "04583147024.jpeg",
@@ -77,8 +76,8 @@ class App extends Component {
           startFrom: 1,
           quantity: 3
         }
-      ]
-      */
+      ]*/
+      
     }
   }
 
@@ -213,11 +212,23 @@ const Table = (props) => {
   return (
     <div>
       <table id="tokens-table">
+        <thead>
+          <tr>
+            <th>Thumb</th>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Quantity</th>
+            <th>Start from</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tfoot>
+        </tfoot>
         <tbody>
           {props
             .tokens
-            .map((token, index) => (
-              <tr key={index}>
+            .map((token) => (
+              <tr key={Math.random()}>
                 <td className="token-image">
                   <div className="token medium">
                     <img alt={token.name} src={token.url}/>
@@ -227,7 +238,8 @@ const Table = (props) => {
                   <input
                     type="text"
                     onChange={(event) => props.onUpdateTokenName(token, event.target.value)}
-                    defaultValue={token.name}name="name"/>
+                    defaultValue={token.name}
+                    name="name"/>
                 </td>
                 <td className="token-qty">
                   <input
@@ -266,11 +278,7 @@ const Table = (props) => {
             ))}
         </tbody>
       </table>
-      <button
-        className={props.tokens
-        ? ''
-        : 'hidden'}
-        onClick={() => props.onRemoveAllTokens()}>Remove All</button>
+      {props.tokens.length > 0 && <button onClick={() => props.onRemoveAllTokens()}>Remove All</button>}
     </div>
   )
 }
@@ -343,7 +351,7 @@ const createTokensList = (tokens) => {
     for (i = start; i < end; i++) {
       pawnsList.push(
         <div
-          key={token.name + i}
+          key={Math.random()}
           className={"token " + SizeEnum.properties[token.size].name}>
           <img alt={token.name} src={token.url}/>
           <div className="number">{i}</div>

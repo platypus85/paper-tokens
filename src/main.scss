@@ -1,4 +1,4 @@
-.hidden{
+.hidden {
     display: none;
 }
 
@@ -9,7 +9,7 @@
     position: relative;
     overflow: hidden;
     border: 1px solid #cecece;
-    &.tiny{
+    &.tiny {
         width: 0.5in;
         height: 0.5in;
         .number {
@@ -46,6 +46,9 @@
         margin-right: auto;
         left: 0;
         right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
     }
     .number {
         background: white;
@@ -69,7 +72,8 @@
 }
 
 @media print {
-    #tokens-table, #tokens-form{
+    #tokens-table,
+    #tokens-form {
         display: none;
     }
 }
