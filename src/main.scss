@@ -5,18 +5,32 @@
     position: relative;
     overflow: hidden;
     border: 1px solid #cecece;
-    &.tiny,
-    &.small {
-        width: 0.75in;
-        height: 0.75in;
+    &.tiny{
+        width: 0.5in;
+        height: 0.5in;
+        .number {
+            width: 15px;
+            height: 15px;
+            font-size: 10px;
+            line-height: 15px;
+        }
     }
-    &.medium {
+    &.medium,
+    &.small {
         width: 1in;
-        height: 1in; 
+        height: 1in;
     }
     &.large {
         width: 2in;
         height: 2in;
+    }
+    &.huge {
+        width: 3in;
+        height: 3in;
+    }
+    &.gargantuan {
+        width: 4in;
+        height: 4in;
     }
     img {
         position: absolute;
@@ -47,5 +61,11 @@
         vertical-align: middle;
         line-height: 18px;
         font-family: 'Righteous', cursive;
+    }
+}
+
+@media print {
+    #tokens-table, #form-tokens {
+        display: none;
     }
 }
