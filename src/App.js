@@ -25,8 +25,12 @@ class App extends Component {
     this.updateTokenName = this
       .updateTokenName
       .bind(this);
+    this.updateShape = this
+      .updateShape
+      .bind(this);
     this.state = {
-      tokens: []
+      tokens: [],
+      shape: ShapeEnum.SQUARE
       /*tokens: [
         {
           url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/16/488/1000/1000/6363763" +
@@ -83,10 +87,15 @@ class App extends Component {
 
   componentDidMount() {
     try {
-      const json = localStorage.getItem('tokens');
-      const tokens = JSON.parse(json);
+      const jsonTokens = localStorage.getItem('tokens');
+      const tokens = JSON.parse(jsonTokens);
       if (tokens) {
         this.setState(() => ({tokens}));
+      }
+      const jsonShape = localStorage.getItem('shape');
+      const shape = JSON.parse(jsonShape);
+      if (shape) {
+        this.setState(() => ({shape}));
       }
     } catch (e) {
       //Do nothing at all
@@ -94,15 +103,19 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const json = JSON.stringify(this.state.tokens);
-    localStorage.setItem('tokens', json);
+    const jsonTokens = JSON.stringify(this.state.tokens);
+    const jsonShape = JSON.stringify(this.state.shape);
+    localStorage.setItem('tokens', jsonTokens);
+    localStorage.setItem('shape', jsonShape);
   }
 
   render() {
     return (
       <div>
         <AddToken handleAddToken={this.handleAddToken}/>
+        <Shape shape={this.state.shape} onUpdateShape={this.updateShape}/>
         <Table
+          shape={this.state.shape}
           tokens={this.state.tokens}
           onRemoveToken={this.removeToken}
           onRemoveAllTokens={this.removeAllTokens}
@@ -110,7 +123,7 @@ class App extends Component {
           onUpdateTokenQuantity={this.updateTokenQuantity}
           onUpdateTokenName={this.updateTokenName}
           onUpdateTokenStartFrom={this.updateTokenStartFrom}/>
-        <Tokens tokens={this.state.tokens}/>
+        <Tokens shape={this.state.shape} tokens={this.state.tokens}/>
       </div>
     );
   }
@@ -139,6 +152,10 @@ class App extends Component {
     });
 
     this.setState({token: updatedSizeTokens})
+  }
+
+  updateShape(s) {
+    this.setState({shape: s})
   }
 
   updateTokenQuantity(token, q) {
@@ -261,7 +278,7 @@ const Table = (props) => {
               .map((token) => (
                 <tr key={Math.random()}>
                   <td className="token-image">
-                    <div className="token medium">
+                    <div className={"token medium " + ShapeEnum.properties[props.shape].name}>
                       <img alt={token.name} src={token.url}/>
                     </div>
                   </td>
@@ -389,6 +406,51 @@ const SizeEnum = {
   }
 };
 
+const Shape = (props) => {
+  return (
+    <div id="shape-selector">
+    <p>Select a shape for the tokens:</p>
+    <div className="btn-group btn-group-toggle" data-toggle="buttons">
+      <label
+        className={props.shape === ShapeEnum.SQUARE
+        ? "btn btn-warning active"
+        : "btn btn-warning"}>
+        <input
+          onClick={() => {
+          props.onUpdateShape(ShapeEnum.SQUARE)
+        }}
+          type="checkbox"/>
+          <i className="far fa-square"></i>
+      </label>
+      <label
+        className={props.shape === ShapeEnum.ROUND
+        ? "btn btn-warning active"
+        : "btn btn-warning"}>
+        <input
+          onClick={() => {
+          props.onUpdateShape(ShapeEnum.ROUND)
+        }}
+          type="checkbox"/>
+          <i className="far fa-circle"></i>
+      </label>
+    </div>
+    </div>
+  )
+}
+
+const ShapeEnum = {
+  SQUARE: 0,
+  ROUND: 1,
+  properties: {
+    0: {
+      name: "square"
+    },
+    1: {
+      name: "round"
+    }
+  }
+};
+
 const ValidURL = (url) => {
   const regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
   if (regexp.test(url)) {
@@ -401,14 +463,14 @@ const ValidURL = (url) => {
 const Tokens = (props) => {
   return (
     <div className="printable" id="printed-tokens">
-      {createTokensList(props.tokens)}
+      {createTokensList(props)}
     </div>
   );
 };
 
-const createTokensList = (tokens) => {
+const createTokensList = (props) => {
   let pawnsList = [];
-  var tks = tokens.slice();
+  var tks = props.tokens.slice();
   tks.sort((a, b) => SizeEnum.properties[a.size].value - SizeEnum.properties[b.size].value).forEach((token, i) => {
     const start = parseInt(token.startFrom, 10);
     const end = start + parseInt(token.quantity, 10);
@@ -416,7 +478,7 @@ const createTokensList = (tokens) => {
       pawnsList.push(
         <div
           key={Math.random()}
-          className={"token " + SizeEnum.properties[token.size].name}>
+          className={"token " + SizeEnum.properties[token.size].name + " " + ShapeEnum.properties[props.shape].name}>
           <img alt={token.name} src={token.url}/>
           <div className="number">{i}</div>
         </div>
