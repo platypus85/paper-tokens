@@ -146,13 +146,22 @@ class App extends Component {
       .state
       .tokens
       .slice();
-    updatedQtyTokens.forEach((t, index) => {
-      if (t === token) {
-        t.quantity = q;
-      }
-    });
 
-    this.setState({tokens: updatedQtyTokens})
+    //If there is already a timeout in process cancel it
+    if (this._timeout) {
+      clearTimeout(this._timeout);
+    }
+
+    this._timeout = setTimeout(() => {
+      this._timeout = null;
+      updatedQtyTokens.forEach((t, index) => {
+        if (t === token) {
+          t.quantity = q;
+        }
+      });
+
+      this.setState({tokens: updatedQtyTokens})
+    }, 500);
   }
 
   updateTokenStartFrom(token, sf) {
@@ -160,27 +169,46 @@ class App extends Component {
       .state
       .tokens
       .slice();
-    updatedStartFrom.forEach((t, index) => {
-      if (t === token) {
-        t.startFrom = sf;
-      }
-    });
 
-    this.setState({tokens: updatedStartFrom})
+    //If there is already a timeout in process cancel it
+    if (this._timeout) {
+      clearTimeout(this._timeout);
+    }
+
+    this._timeout = setTimeout(() => {
+      this._timeout = null;
+      updatedStartFrom.forEach((t, index) => {
+        if (t === token) {
+          t.startFrom = sf;
+        }
+      });
+
+      this.setState({tokens: updatedStartFrom})
+    }, 1000);
   }
 
   updateTokenName(token, n) {
+
     let updatedNameTokens = this
       .state
       .tokens
       .slice();
-    updatedNameTokens.forEach((t, index) => {
-      if (t === token) {
-        t.name = n;
-      }
-    });
 
-    this.setState({token: updatedNameTokens})
+    //If there is already a timeout in process cancel it
+    if (this._timeout) {
+      clearTimeout(this._timeout);
+    }
+
+    this._timeout = setTimeout(() => {
+      this._timeout = null;
+      updatedNameTokens.forEach((t, index) => {
+        if (t === token) {
+          t.name = n;
+        }
+      });
+
+      this.setState({token: updatedNameTokens})
+    }, 1000);
   }
 
   handleAddToken(tokenUrl) {
@@ -211,77 +239,112 @@ class App extends Component {
 const Table = (props) => {
   return (
     <div>
-      <table
+      <div
         className={props.tokens.length > 0
-        ? ""
-        : "hidden"}
-        id="tokens-table">
-        <thead>
-          <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Quantity</th>
-            <th>Size</th>
-            <th>Count Start</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tfoot></tfoot>
-        <tbody>
-          {props
-            .tokens
-            .map((token) => (
-              <tr key={Math.random()}>
-                <td className="token-image">
-                  <div className="token medium">
-                    <img alt={token.name} src={token.url}/>
-                  </div>
-                </td>
-                <td className="token-name">
-                  <input
-                    type="text"
-                    onChange={(event) => props.onUpdateTokenName(token, event.target.value)}
-                    defaultValue={token.name}
-                    name="name"/>
-                </td>
-                <td className="token-qty">
-                  <input
-                    type="number"
-                    onChange={(event) => props.onUpdateTokenQuantity(token, event.target.value)}
-                    name="quantity"
-                    defaultValue={token.quantity}
-                    min="1"/>
-                </td>
-                <td>
-                  <div className="token-size">
-                    <select
-                      value={SizeEnum.properties[token.size].value}
-                      onChange={(event) => props.onUpdateSize(token, event.target.value)}>
-                      <option value="0">Tiny</option>
-                      <option value="1">Small</option>
-                      <option value="2">Medium</option>
-                      <option value="3">Large</option>
-                      <option value="4">Huge</option>
-                      <option value="5">Gargantuan</option>
-                    </select>
-                  </div>
-                </td>
-                <td className="token-startFrom">
-                  <input
-                    type="number"
-                    onChange={(event) => props.onUpdateTokenStartFrom(token, event.target.value)}
-                    name="startFrom"
-                    defaultValue={token.startFrom}
-                    min="1"/>
-                </td>
-                <td className="delete">
-                  <button onClick={() => props.onRemoveToken(token)}>Remove</button>
-                </td>
-              </tr>
-            ))}
-        </tbody>
-      </table>
-      {props.tokens.length > 0 && <button id="remove-all" onClick={() => props.onRemoveAllTokens()}>Remove All</button>}
+        ? "content-main"
+        : "hidden"}>
+        <table id="tokens-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Size</th>
+              <th>Quantity</th>
+              <th>Count Start</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tfoot></tfoot>
+          <tbody>
+            {props
+              .tokens
+              .map((token) => (
+                <tr key={Math.random()}>
+                  <td className="token-image">
+                    <div className="token medium">
+                      <img alt={token.name} src={token.url}/>
+                    </div>
+                  </td>
+                  <td className="token-name">
+                    <input
+                      className="form-control"
+                      type="text"
+                      onChange={(event) => props.onUpdateTokenName(token, event.target.value)}
+                      defaultValue={token.name}
+                      name="name"/>
+                  </td>
+                  <td>
+                    <div className="token-size">
+                      <select
+                        className="form-control"
+                        value={SizeEnum.properties[token.size].value}
+                        onChange={(event) => props.onUpdateSize(token, event.target.value)}>
+                        <option value="0">Tiny</option>
+                        <option value="1">Small</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Large</option>
+                        <option value="4">Huge</option>
+                        <option value="5">Gargantuan</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td className="token-qty">
+                    <input
+                      className="form-control"
+                      type="number"
+                      onChange={(event) => props.onUpdateTokenQuantity(token, event.target.value)}
+                      name="quantity"
+                      defaultValue={token.quantity}
+                      min="1"/>
+                  </td>
+                  <td className="token-startFrom">
+                    <input
+                      className="form-control"
+                      type="number"
+                      onChange={(event) => props.onUpdateTokenStartFrom(token, event.target.value)}
+                      name="startFrom"
+                      defaultValue={token.startFrom}
+                      min="1"/>
+                  </td>
+                  <td className="delete">
+                    <button
+                      type="button"
+                      className="btn btn-outline-danger"
+                      onClick={() => {
+                      if (window.confirm('Are you sure you wish to remove ' + token.name + '?')) 
+                        props.onRemoveToken(token)
+                    }}>
+                      <i className="fas fa-trash-alt"></i>
+                    </button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+        {props.tokens.length > 0 && <div id="table-actions-container">
+          <button
+            type="button"
+            className="btn btn-outline-primary btn-lg"
+            id="remove-all"
+            onClick={() => {
+            if (window.confirm('Are you sure you wish to remove all the tokens?')) 
+              props.onRemoveAllTokens()
+          }}>
+            Remove All
+          </button>
+        </div>}
+      </div>
+      {props.tokens.length > 0 && <div id="print-container">
+        <button
+          type="button"
+          className="btn btn-success btn-lg"
+          id="print-all"
+          onClick={() => {
+          window.print()
+        }}>
+        <i className="fas fa-print"></i> Print
+        </button>
+      </div>}
     </div>
   )
 }
@@ -339,7 +402,6 @@ const ValidURL = (url) => {
 const Tokens = (props) => {
   return (
     <div>
-      {props.tokens.length === 0 && <p>Please, add a link to a creature image to get started!</p>}
       {createTokensList(props.tokens)}
     </div>
   );
@@ -396,11 +458,12 @@ class AddToken extends Component {
   render() {
     return (
       <div>
-        {this.state.error && <p>{this.state.error}</p>}
+      <p>Insert a link to a creature image!</p>
         <form autoComplete="off" id="tokens-form" onSubmit={this.handleAddToken}>
-          <input type="text" name="tokenUrl"/>
-          <button>Add Token</button>
+          <input className="url-input" type="text" name="tokenUrl"/>
+          <button className="btn btn-outline-success">Add Token</button>
         </form>
+        {this.state.error && <p className="error">{this.state.error}</p>}
       </div>
     );
   }
