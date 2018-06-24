@@ -134,14 +134,14 @@ html {
         }
         #table-actions-container {
             margin: 20px auto;
-        }
-        #print-container {
-            margin: 20px auto;
-            text-align: center;
             #print-all {
-                font-size: 30px;
+                float: right;
             }
-        }
+            #remove-all{
+                float: left;
+            }
+        } 
+        
     }
     .header {
         top: 0;
@@ -222,5 +222,5 @@ html {
 
     .printable * {
         display: inline-block !important;
-     }
+    }
 }

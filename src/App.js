@@ -332,19 +332,18 @@ const Table = (props) => {
           }}>
             Remove All
           </button>
+          <button
+            type="button"
+            className="btn btn-success btn-lg"
+            id="print-all"
+            onClick={() => {
+            window.print()
+          }}>
+            <i className="fas fa-print"></i>
+            Print
+          </button>
         </div>}
       </div>
-      {props.tokens.length > 0 && <div id="print-container">
-        <button
-          type="button"
-          className="btn btn-success btn-lg"
-          id="print-all"
-          onClick={() => {
-          window.print()
-        }}>
-        <i className="fas fa-print"></i> Print
-        </button>
-      </div>}
     </div>
   )
 }
@@ -458,7 +457,7 @@ class AddToken extends Component {
   render() {
     return (
       <div id="add-link-container">
-      <p>Insert a link to a creature image!</p>
+        <p>Insert a link to a creature image!</p>
         <form autoComplete="off" id="tokens-form" onSubmit={this.handleAddToken}>
           <input className="url-input" type="text" name="tokenUrl"/>
           <button className="btn btn-success">Add Token</button>
