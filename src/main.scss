@@ -1,6 +1,4 @@
-$bg-color: #eee;
-$main-color: #fff;
-$text-color: #333;
+
 @font-face {
     font-family: 'MrsEavesSmallCaps';
     src: url('../fonts/mrseavessmallcaps_regular-webfont.woff2') format('woff2'), url('../fonts/mrseavessmallcaps_regular-webfont.woff') format('woff');
@@ -16,10 +14,11 @@ $text-color: #333;
 }
 
 html {
+    position: relative;
     min-height: 100%;
-    height: 100%;
     body {
-        background: #f9f9f9 url("../images/bgtexture.png") repeat;
+        margin-bottom: 60px;
+        background: #f9f9f9 url("../images/bgtexture.jpg") repeat;
         font-family: "Scala Sans Regular", Roboto, Helvetica, sans-serif;
         font-size: 15px;
         background-color: transparent;
@@ -33,9 +32,17 @@ html {
             font-size: 30px;
             color: #822000
         }
+        strong {
+            font-weight: bold;
+            color: #822000;
+        }
         .hidden {
             display: none;
         }
+        main.container{
+            padding: 30px;
+        }
+
         .token {
             display: inline-block;
             page-break-inside: avoid;
@@ -105,36 +112,76 @@ html {
                 font-family: 'Righteous', cursive;
             }
         }
-    }
-    .content-main {
-        position: relative;
-        margin: 40px auto;
-        height: auto;
-        overflow: hidden;
-        padding: 20px;
-        text-align: center;
-        background: $main-color;
-        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
-        #tokens-table {
-            width: 100%;
+        .content-main {
+            position: relative;
+            margin: 40px auto;
+            height: auto;
+            overflow: hidden;
+            padding: 20px;
             text-align: center;
+            background: white;
+            box-shadow: 0 3px 5px rgba(0, 0, 0, 0.18);
+            #tokens-table {
+                width: 100%;
+                text-align: center;
+            }
+        }
+        #tokens-form {
+            margin: 20px auto;
+            input.url-input {
+                margin-right: 12px;
+            }
+        }
+        #table-actions-container {
+            margin: 20px auto;
+        }
+        #print-container {
+            margin: 20px auto;
+            text-align: center;
+            #print-all {
+                font-size: 30px;
+            }
         }
     }
-    #tokens-form {
-        margin: 20px auto;
-        input.url-input {
-            margin-right: 12px;
-        }
-    }
-    #table-actions-container{
-        margin: 20px auto;
-    }
-    #print-container{
-        margin: 20px auto;
+    .header {
+        top: 0;
+        width: 100%;
         text-align: center;
-        #print-all{
-            font-size: 30px;
+        padding: 20px;
+        background-color: #192527;
+        h1 {
+            color: white
         }
+    }
+    .footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        /* Set the fixed height of the footer here */
+        height: 60px;
+        line-height: 60px;
+        /* Vertically center the text there */
+        background-color: #192527;
+        a {
+            color: white;
+        }
+    }
+    #add-link-container {
+        background: transparent url(../images/scroll.png) no-repeat;
+        text-align: center;
+        margin: 40px auto;
+        max-width: 450px;
+        padding: 30px 30px 2px 30px;
+        background-size: 100% 100%;
+
+        .url-input{
+            width: 80%;
+            margin-bottom: 10px;
+        }
+    }
+
+    #donate-form{
+        text-align: center;
     }
 }
 
@@ -153,13 +200,27 @@ html {
     }
 }
 
+@media screen {
+    .printable * {
+        display: none !important;
+    }
+}
+
 @media print {
     #tokens-table,
-    #tokens-form,
+    #add-link-container,
     button#remove-all,
     #print-container,
     .container h1,
-    .content-main{
+    .content-main,
+    header,
+    footer,
+    .container p,
+    #donate-form{
         display: none;
     }
+
+    .printable * {
+        display: inline-block !important;
+     }
 }

@@ -279,12 +279,12 @@ const Table = (props) => {
                         className="form-control"
                         value={SizeEnum.properties[token.size].value}
                         onChange={(event) => props.onUpdateSize(token, event.target.value)}>
-                        <option value="0">Tiny</option>
-                        <option value="1">Small</option>
-                        <option value="2">Medium</option>
-                        <option value="3">Large</option>
-                        <option value="4">Huge</option>
-                        <option value="5">Gargantuan</option>
+                        <option value="0">Tiny (½in x ½in)</option>
+                        <option value="1">Small (1in x 1in)</option>
+                        <option value="2">Medium (1in x 1in)</option>
+                        <option value="3">Large (2in x 2in)</option>
+                        <option value="4">Huge (3in x 3in)</option>
+                        <option value="5">Gargantuan (4in x 4in)</option>
                       </select>
                     </div>
                   </td>
@@ -401,7 +401,7 @@ const ValidURL = (url) => {
 
 const Tokens = (props) => {
   return (
-    <div>
+    <div className="printable" id="printed-tokens">
       {createTokensList(props.tokens)}
     </div>
   );
@@ -457,11 +457,11 @@ class AddToken extends Component {
 
   render() {
     return (
-      <div>
+      <div id="add-link-container">
       <p>Insert a link to a creature image!</p>
         <form autoComplete="off" id="tokens-form" onSubmit={this.handleAddToken}>
           <input className="url-input" type="text" name="tokenUrl"/>
-          <button className="btn btn-outline-success">Add Token</button>
+          <button className="btn btn-success">Add Token</button>
         </form>
         {this.state.error && <p className="error">{this.state.error}</p>}
       </div>
