@@ -299,9 +299,10 @@ const Table = (props) => {
                         <option value="0">Tiny (½in x ½in)</option>
                         <option value="1">Small (1in x 1in)</option>
                         <option value="2">Medium (1in x 1in)</option>
-                        <option value="3">Large (2in x 2in)</option>
-                        <option value="4">Huge (3in x 3in)</option>
-                        <option value="5">Gargantuan (4in x 4in)</option>
+                        <option value="3">Large (1.5in x 1.5in)</option>
+                        <option value="4">Large (2in x 2in)</option>
+                        <option value="5">Huge (3in x 3in)</option>
+                        <option value="6">Gargantuan (4in x 4in)</option>
                       </select>
                     </div>
                   </td>
@@ -369,9 +370,10 @@ const SizeEnum = {
   TINY: 0,
   SMALL: 1,
   MEDIUM: 2,
-  LARGE: 3,
-  HUGE: 4,
-  GARGANTUAN: 5,
+  LARGE1: 3,
+  LARGE2: 4,
+  HUGE: 5,
+  GARGANTUAN: 6,
   properties: {
     0: {
       name: "tiny",
@@ -389,18 +391,23 @@ const SizeEnum = {
       code: "M"
     },
     3: {
-      name: "large",
+      name: "large1",
       value: 3,
-      code: "L"
+      code: "L2"
     },
     4: {
-      name: "huge",
+      name: "large2",
       value: 4,
-      code: "H"
+      code: "L1"
     },
     5: {
-      name: "gargantuan",
+      name: "huge",
       value: 5,
+      code: "H"
+    },
+    6: {
+      name: "gargantuan",
+      value: 6,
       code: "G"
     }
   }

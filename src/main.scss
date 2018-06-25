@@ -17,7 +17,7 @@ html {
     min-height: 100%;
     body {
         margin-bottom: 60px;
-        background: #f9f9f9 url("../images/bgtexture.jpg") repeat;
+        background: white url("../images/bgtexture.jpg") repeat;
         font-family: "Scala Sans Regular", Roboto, Helvetica, sans-serif;
         font-size: 15px;
         background-color: transparent;
@@ -69,7 +69,11 @@ html {
                 width: 1in;
                 height: 1in;
             }
-            &.large {
+            &.large1 {
+                width: 1.5in;
+                height: 1.5in;
+            }
+            &.large2 {
                 width: 2in;
                 height: 2in;
             }
@@ -226,8 +230,11 @@ html {
     footer,
     .container p,
     #donate-form,
-    #shape-selector{
+    #shape-selector {
         display: none;
+    }
+    body {
+        background: white !important;
     }
     .printable * {
         display: inline-block !important;
