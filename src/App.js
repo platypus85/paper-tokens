@@ -28,60 +28,12 @@ class App extends Component {
     this.updateShape = this
       .updateShape
       .bind(this);
+      this.updateTokenEnumeration = this
+      .updateTokenEnumeration
+      .bind(this);
     this.state = {
       tokens: [],
       shape: ShapeEnum.SQUARE
-      /*tokens: [
-        {
-          url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/16/488/1000/1000/6363763" +
-              "04583147024.jpeg",
-          size: SizeEnum.LARGE,
-          name: "Plesiosaurus",
-          startFrom: 1,
-          quantity: 1
-        }, {
-          url: "https://orig00.deviantart.net/cc4b/f/2014/205/d/5/pzo1012dustscorpion_by_critica" +
-              "l_dean-d7s2la0.jpg",
-          size: SizeEnum.LARGE,
-          name: "Giant Scorpion",
-          startFrom: 1,
-          quantity: 1
-        }, {
-          url: "https://i.redditmedia.com/KU0I7xPrR5InYa5q3UlxOweUofi66o4sQ7DAMS-PgCQ.jpg?w=320&" +
-              "s=7fadb6fa1d2b85b17aeb7d33c9c92890",
-          size: SizeEnum.LARGE,
-          name: "Crocodile",
-          startFrom: 1,
-          quantity: 2
-        }, {
-          url: "https://78.media.tumblr.com/95bdc5ee72b8eca66d8ca332cc4cb084/tumblr_inline_p84b0" +
-              "sigqf1r0zz7o_500.jpg",
-          size: SizeEnum.MEDIUM,
-          name: "Ape",
-          startFrom: 1,
-          quantity: 3
-        }, {
-          url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/775/1000/1000/6363951" +
-              "01744474687.png",
-          size: SizeEnum.MEDIUM,
-          name: "Yellow Musk Creeper",
-          startFrom: 1,
-          quantity: 1
-        }, {
-          url: "http://www.dmsguild.com/images/8957/193701.jpg",
-          size: SizeEnum.MEDIUM,
-          name: "Guard",
-          startFrom: 1,
-          quantity: 2
-        }, {
-          url: "https://media-waterdeep.cursecdn.com/avatars/thumbnails/30/773/1000/1000/636395101542518419.png",
-          size: SizeEnum.MEDIUM,
-          name: "Yellow Musk Zombie",
-          startFrom: 1,
-          quantity: 3
-        }
-      ]*/
-
     }
   }
 
@@ -122,7 +74,8 @@ class App extends Component {
           onUpdateSize={this.updateSize}
           onUpdateTokenQuantity={this.updateTokenQuantity}
           onUpdateTokenName={this.updateTokenName}
-          onUpdateTokenStartFrom={this.updateTokenStartFrom}/>
+          onUpdateTokenStartFrom={this.updateTokenStartFrom}
+          onUpdateTokenEnumeration={this.updateTokenEnumeration}/>
         <Tokens shape={this.state.shape} tokens={this.state.tokens}/>
       </div>
     );
@@ -239,6 +192,7 @@ class App extends Component {
       url: tokenUrl,
       size: SizeEnum.MEDIUM,
       name: "New Token",
+      enumeration: true,
       startFrom: 1,
       quantity: 1
     }
@@ -250,6 +204,20 @@ class App extends Component {
           .concat(token)
       }
     });
+  }
+
+  updateTokenEnumeration(token, value) {
+    let updatedEnumerationTokens = this
+      .state
+      .tokens
+      .slice();
+      updatedEnumerationTokens.forEach((t, index) => {
+      if (t === token) {
+        t.enumeration = value;
+      }
+    });
+
+    this.setState({token: updatedEnumerationTokens})
   }
 }
 
@@ -267,7 +235,8 @@ const Table = (props) => {
               <th>Name</th>
               <th>Size</th>
               <th>Quantity</th>
-              <th>Count Start</th>
+              <th>Show Enumeration</th>
+              <th>Enumeration Start</th>
               <th>Actions</th>
             </tr>
           </thead>
@@ -280,6 +249,7 @@ const Table = (props) => {
                   <td className="token-image">
                     <div className={"token medium " + ShapeEnum.properties[props.shape].name}>
                       <img alt={token.name} src={token.url}/>
+                      {token.enumeration && <div className="number">#</div>}
                     </div>
                   </td>
                   <td className="token-name">
@@ -315,10 +285,37 @@ const Table = (props) => {
                       defaultValue={token.quantity}
                       min="1"/>
                   </td>
+                  <td className="token-showEnumeration">
+                    <div className="btn-group btn-group-toggle" data-toggle="buttons">
+                      <label
+                        className={token.enumeration === false
+                        ? "btn btn-primary active"
+                        : "btn btn-primary"}>
+                        <input
+                          onClick={() => {
+                            props.onUpdateTokenEnumeration(token,false)
+                        }}
+                          type="checkbox"/>
+                        <i className="far fa-eye-slash"></i>
+                      </label>
+                      <label
+                        className={token.enumeration === true
+                        ? "btn btn-primary active"
+                        : "btn btn-primary"}>
+                        <input
+                          onClick={() => {
+                            props.onUpdateTokenEnumeration(token,true)
+                        }}
+                          type="checkbox"/>
+                        <i className="far fa-eye"></i>
+                      </label>
+                    </div>
+                  </td>
                   <td className="token-startFrom">
                     <input
                       className="form-control"
                       type="number"
+                      disabled = {token.enumeration ? "" : "disabled"}
                       onChange={(event) => props.onUpdateTokenStartFrom(token, event.target.value)}
                       name="startFrom"
                       defaultValue={token.startFrom}
@@ -416,31 +413,31 @@ const SizeEnum = {
 const Shape = (props) => {
   return (
     <div id="shape-selector">
-    <p>Select a shape for the tokens:</p>
-    <div className="btn-group btn-group-toggle" data-toggle="buttons">
-      <label
-        className={props.shape === ShapeEnum.SQUARE
-        ? "btn btn-warning active"
-        : "btn btn-warning"}>
-        <input
-          onClick={() => {
-          props.onUpdateShape(ShapeEnum.SQUARE)
-        }}
-          type="checkbox"/>
+      <p>Select a shape for the tokens:</p>
+      <div className="btn-group btn-group-toggle" data-toggle="buttons">
+        <label
+          className={props.shape === ShapeEnum.SQUARE
+          ? "btn btn-warning active"
+          : "btn btn-warning"}>
+          <input
+            onClick={() => {
+            props.onUpdateShape(ShapeEnum.SQUARE)
+          }}
+            type="checkbox"/>
           <i className="far fa-square"></i>
-      </label>
-      <label
-        className={props.shape === ShapeEnum.ROUND
-        ? "btn btn-warning active"
-        : "btn btn-warning"}>
-        <input
-          onClick={() => {
-          props.onUpdateShape(ShapeEnum.ROUND)
-        }}
-          type="checkbox"/>
+        </label>
+        <label
+          className={props.shape === ShapeEnum.ROUND
+          ? "btn btn-warning active"
+          : "btn btn-warning"}>
+          <input
+            onClick={() => {
+            props.onUpdateShape(ShapeEnum.ROUND)
+          }}
+            type="checkbox"/>
           <i className="far fa-circle"></i>
-      </label>
-    </div>
+        </label>
+      </div>
     </div>
   )
 }
@@ -477,7 +474,9 @@ const Tokens = (props) => {
 
 const createTokensList = (props) => {
   let pawnsList = [];
-  var tks = props.tokens.slice();
+  var tks = props
+    .tokens
+    .slice();
   tks.sort((a, b) => SizeEnum.properties[a.size].value - SizeEnum.properties[b.size].value).forEach((token, i) => {
     const start = parseInt(token.startFrom, 10);
     const end = start + parseInt(token.quantity, 10);
@@ -487,7 +486,7 @@ const createTokensList = (props) => {
           key={Math.random()}
           className={"token " + SizeEnum.properties[token.size].name + " " + ShapeEnum.properties[props.shape].name}>
           <img alt={token.name} src={token.url}/>
-          <div className="number">{i}</div>
+          {token.enumeration && <div className="number">{i}</div>}
         </div>
       )
     }

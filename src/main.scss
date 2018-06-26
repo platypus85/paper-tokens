@@ -215,7 +215,9 @@ html {
 
 @media screen {
     .printable * {
-        display: none !important;
+        display: block !important;
+        height: 0px;
+        overflow: hidden;
     }
 }
 
@@ -237,6 +239,6 @@ html {
         background: white !important;
     }
     .printable * {
-        display: inline-block !important;
+        height: auto;
     }
 }
