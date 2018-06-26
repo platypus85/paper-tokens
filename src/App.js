@@ -349,13 +349,13 @@ const Table = (props) => {
           </button>
           <button
             type="button"
-            className="btn btn-success btn-lg"
+            className="btn btn-primary btn-lg"
             id="print-all"
             onClick={() => {
             window.print()
           }}>
             <i className="fas fa-print"></i>
-            Print
+            &nbsp;Print
           </button>
         </div>}
       </div>
@@ -417,8 +417,8 @@ const Shape = (props) => {
       <div className="btn-group btn-group-toggle" data-toggle="buttons">
         <label
           className={props.shape === ShapeEnum.SQUARE
-          ? "btn btn-warning active"
-          : "btn btn-warning"}>
+          ? "btn btn-primary active"
+          : "btn btn-primary"}>
           <input
             onClick={() => {
             props.onUpdateShape(ShapeEnum.SQUARE)
@@ -428,8 +428,8 @@ const Shape = (props) => {
         </label>
         <label
           className={props.shape === ShapeEnum.ROUND
-          ? "btn btn-warning active"
-          : "btn btn-warning"}>
+          ? "btn btn-primary active"
+          : "btn btn-primary"}>
           <input
             onClick={() => {
             props.onUpdateShape(ShapeEnum.ROUND)
@@ -525,10 +525,10 @@ class AddToken extends Component {
   render() {
     return (
       <div id="add-link-container">
-        <p>Insert a link to a creature image!</p>
+        <p>Insert a link to a creature image to begin!</p>
         <form autoComplete="off" id="tokens-form" onSubmit={this.handleAddToken}>
           <input className="url-input" type="text" name="tokenUrl"/>
-          <button className="btn btn-success">Add Token</button>
+          <button className="btn btn-primary btn-lg">Add Token</button>
         </form>
         {this.state.error && <p className="error">{this.state.error}</p>}
       </div>
