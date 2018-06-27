@@ -65,7 +65,7 @@ class App extends Component {
     return (
       <div>
         <AddToken handleAddToken={this.handleAddToken}/>
-        <Shape shape={this.state.shape} onUpdateShape={this.updateShape}/>
+        <Shape shape={this.state.shape} tokens={this.state.tokens} onUpdateShape={this.updateShape}/>
         <Table
           shape={this.state.shape}
           tokens={this.state.tokens}
@@ -412,7 +412,7 @@ const SizeEnum = {
 
 const Shape = (props) => {
   return (
-    <div id="shape-selector">
+    <div id="shape-selector" className={props.tokens.length > 0 ? "show" : "hide"}>
       <p>Select a shape for the tokens:</p>
       <div className="btn-group btn-group-toggle" data-toggle="buttons">
         <label

@@ -199,6 +199,13 @@ html {
             }
         }
     }
+
+    .show{
+        display: block;
+    }
+    .hide{
+        display: none;
+    }
 }
 
 @media all and (max-width:768px) {
