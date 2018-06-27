@@ -231,7 +231,7 @@ const Table = (props) => {
         className={props.tokens.length > 0
         ? "content-main"
         : "hidden"}>
-        <table id="tokens-table">
+        <table className="table table-striped" id="tokens-table">
           <thead>
             <tr>
               <th>Image</th>

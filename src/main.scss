@@ -134,6 +134,9 @@ html {
             #tokens-table {
                 width: 100%;
                 text-align: center;
+                td{
+                    vertical-align: middle;
+                }
             }
         }
         #tokens-form {
