@@ -28,7 +28,7 @@ class App extends Component {
     this.updateShape = this
       .updateShape
       .bind(this);
-      this.updateTokenEnumeration = this
+    this.updateTokenEnumeration = this
       .updateTokenEnumeration
       .bind(this);
     this.state = {
@@ -65,7 +65,10 @@ class App extends Component {
     return (
       <div>
         <AddToken handleAddToken={this.handleAddToken}/>
-        <Shape shape={this.state.shape} tokens={this.state.tokens} onUpdateShape={this.updateShape}/>
+        <Shape
+          shape={this.state.shape}
+          tokens={this.state.tokens}
+          onUpdateShape={this.updateShape}/>
         <Table
           shape={this.state.shape}
           tokens={this.state.tokens}
@@ -211,7 +214,7 @@ class App extends Component {
       .state
       .tokens
       .slice();
-      updatedEnumerationTokens.forEach((t, index) => {
+    updatedEnumerationTokens.forEach((t, index) => {
       if (t === token) {
         t.enumeration = value;
       }
@@ -248,11 +251,11 @@ const Table = (props) => {
                 <tr key={Math.random()}>
                   <td className="token-image">
                     <div className={"token medium " + ShapeEnum.properties[props.shape].name}>
-                      <img alt={token.name} src={token.url}/>
-                      {token.enumeration && <div className="number">#</div>}
+                      <img alt={token.name} src={token.url}/> {token.enumeration && <div className="number">#</div>}
                     </div>
                   </td>
                   <td className="token-name">
+                    <label className="mobile">Name:</label>
                     <input
                       className="form-control"
                       type="text"
@@ -262,6 +265,7 @@ const Table = (props) => {
                   </td>
                   <td>
                     <div className="token-size">
+                      <label className="mobile">Size:</label>
                       <select
                         className="form-control"
                         value={SizeEnum.properties[token.size].value}
@@ -277,6 +281,7 @@ const Table = (props) => {
                     </div>
                   </td>
                   <td className="token-qty">
+                    <label className="mobile">Quantity:</label>
                     <input
                       className="form-control"
                       type="number"
@@ -286,14 +291,17 @@ const Table = (props) => {
                       min="1"/>
                   </td>
                   <td className="token-showEnumeration">
+                    <label className="mobile">Show Enum.:</label>
+
                     <div className="btn-group btn-group-toggle" data-toggle="buttons">
+
                       <label
                         className={token.enumeration === false
                         ? "btn btn-primary active"
                         : "btn btn-primary"}>
                         <input
                           onClick={() => {
-                            props.onUpdateTokenEnumeration(token,false)
+                          props.onUpdateTokenEnumeration(token, false)
                         }}
                           type="checkbox"/>
                         <i className="far fa-eye-slash"></i>
@@ -304,7 +312,7 @@ const Table = (props) => {
                         : "btn btn-primary"}>
                         <input
                           onClick={() => {
-                            props.onUpdateTokenEnumeration(token,true)
+                          props.onUpdateTokenEnumeration(token, true)
                         }}
                           type="checkbox"/>
                         <i className="far fa-eye"></i>
@@ -312,16 +320,20 @@ const Table = (props) => {
                     </div>
                   </td>
                   <td className="token-startFrom">
+                    <label className="mobile">Enum. start:</label>
                     <input
                       className="form-control"
                       type="number"
-                      disabled = {token.enumeration ? "" : "disabled"}
+                      disabled={token.enumeration
+                      ? ""
+                      : "disabled"}
                       onChange={(event) => props.onUpdateTokenStartFrom(token, event.target.value)}
                       name="startFrom"
                       defaultValue={token.startFrom}
                       min="1"/>
                   </td>
                   <td className="delete">
+                    <label className="mobile">Actions:</label>
                     <button
                       type="button"
                       className="btn btn-outline-danger"
@@ -412,7 +424,11 @@ const SizeEnum = {
 
 const Shape = (props) => {
   return (
-    <div id="shape-selector" className={props.tokens.length > 0 ? "show" : "hide"}>
+    <div
+      id="shape-selector"
+      className={props.tokens.length > 0
+      ? "show"
+      : "hide"}>
       <p>Select a shape for the tokens:</p>
       <div className="btn-group btn-group-toggle" data-toggle="buttons">
         <label
@@ -485,8 +501,7 @@ const createTokensList = (props) => {
         <div
           key={Math.random()}
           className={"token " + SizeEnum.properties[token.size].name + " " + ShapeEnum.properties[props.shape].name}>
-          <img alt={token.name} src={token.url}/>
-          {token.enumeration && <div className="number">{i}</div>}
+          <img alt={token.name} src={token.url}/> {token.enumeration && <div className="number">{i}</div>}
         </div>
       )
     }

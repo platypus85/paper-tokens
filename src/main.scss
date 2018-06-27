@@ -159,7 +159,8 @@ html {
         padding: 20px;
         background-color: #192527;
         h1 {
-            color: white
+            color: white;
+            margin: 0;
         }
     }
     .footer {
@@ -262,19 +263,39 @@ html {
             margin-bottom: 0;
         }
     }
+    .mobile {
+        display: none;
+    }
 }
 
 @media all and (max-width:768px) {
     #tokens-table {
+        border-collapse: separate;
+        border-spacing: 10px;
         tr {
             display: table;
             width: 100%;
+            border: 1px solid #d6d6d6;
+            border-radius: 5px;
+            margin-top: 12px;
+            background: whitesmoke;
         }
         td {
             display: table-row;
         }
         thead {
             display: none;
+        }
+        .mobile {
+            display: inline-block;
+            width: 40%;
+            text-align: left;
+        }
+        .form-control,
+        .btn-group-toggle,
+        .btn-outline-danger {
+            display: inline-block;
+            width: 60%;
         }
     }
 }
@@ -297,7 +318,8 @@ html {
     footer,
     .container p,
     #donate-form,
-    #shape-selector {
+    #shape-selector,
+    .wrap-collabsible {
         display: none;
     }
     body {
