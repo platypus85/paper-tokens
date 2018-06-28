@@ -268,13 +268,13 @@ const Table = (props) => {
                         className="form-control"
                         value={SizeEnum.properties[token.size].value}
                         onChange={(event) => props.onUpdateSize(token, event.target.value)}>
-                        <option value="0">Tiny (½in x ½in)</option>
-                        <option value="1">Small (1in x 1in)</option>
-                        <option value="2">Medium (1in x 1in)</option>
-                        <option value="3">Large (1.5in x 1.5in)</option>
-                        <option value="4">Large (2in x 2in)</option>
-                        <option value="5">Huge (3in x 3in)</option>
-                        <option value="6">Gargantuan (4in x 4in)</option>
+                        <option value="0">Tiny (0.75x0.75 in)</option>
+                        <option value="1">Small (1x1 in)</option>
+                        <option value="2">Medium (1x1 in)</option>
+                        <option value="3">Large (1.5x1.5 in)</option>
+                        <option value="4">Large (2x2 in)</option>
+                        <option value="5">Huge (3x3 in)</option>
+                        <option value="6">Gargantuan (4x4 in)</option>
                       </select>
                     </div>
                   </td>
@@ -334,7 +334,7 @@ const Table = (props) => {
                     <label className="mobile">Actions:</label>
                     <button
                       type="button"
-                      className="btn btn-outline-danger"
+                      className="btn btn-warning"
                       onClick={() => {
                       if (window.confirm('Are you sure you wish to remove ' + token.name + '?')) 
                         props.onRemoveToken(token)
@@ -349,7 +349,7 @@ const Table = (props) => {
         {props.tokens.length > 0 && <div id="table-actions-container">
           <button
             type="button"
-            className="btn btn-outline-primary btn-lg"
+            className="btn btn-lg"
             id="remove-all"
             onClick={() => {
             if (window.confirm('Are you sure you wish to remove all the tokens?')) 

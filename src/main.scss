@@ -62,8 +62,8 @@ html {
                 border-radius: 50%;
             }
             &.tiny {
-                width: 0.5in;
-                height: 0.5in;
+                width: 0.75in;
+                height: 0.75in;
                 .number {
                     width: 15px;
                     height: 15px;
@@ -179,6 +179,7 @@ html {
         line-height: 60px;
         /* Vertically center the text there */
         background-color: #192527;
+        color: #a0a0a0;
         a {
             color: white;
         }
@@ -314,25 +315,35 @@ html {
 }
 
 @media print {
-    #tokens-table,
-    #add-link-container,
-    button#remove-all,
-    #print-container,
-    .container h1,
-    .container h2,
-    .content-main,
-    header,
-    footer,
-    .container p,
-    #donate-form,
-    #shape-selector,
-    .wrap-collabsible {
-        display: none;
-    }
-    body {
-        background: white !important;
-    }
-    .printable * {
-        display: inline-block !important;
+    html{
+        body {
+            background: white !important;
+    
+            main{
+                &.container{
+                    padding: 0;
+                    width: auto !important;
+                }
+            }
+        }
+        .printable * {
+            display: inline-block !important;
+        }
+        #tokens-table,
+        #add-link-container,
+        button#remove-all,
+        #print-container,
+        .container h1,
+        .container h2,
+        .content-main,
+        header,
+        footer,
+        .container p,
+        #donate-form,
+        #shape-selector,
+        .wrap-collabsible,
+        #shape-selector {
+            display: none !important
+        }
     }
 }
