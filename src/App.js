@@ -185,9 +185,7 @@ class App extends Component {
   }
 
   handleAddToken(tokenUrl) {
-    if (!tokenUrl || !ValidURL(tokenUrl)) {
-      return 'Enter a valid URL';
-    } else if (this.state.tokens.some(token => token.url === tokenUrl)) {
+    if (this.state.tokens.some(token => token.url === tokenUrl)) {
       return 'This token already exists';
     }
 
@@ -471,15 +469,6 @@ const ShapeEnum = {
   }
 };
 
-const ValidURL = (url) => {
-  const regexp = /^(?:(?:https?|ftp):\/\/)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,})))(?::\d{2,5})?(?:\/\S*)?$/;
-  if (regexp.test(url)) {
-    return true;
-  } else {
-    return false;
-  }
-}
-
 const Tokens = (props) => {
   return (
     <div className="printable" id="printed-tokens">
@@ -515,6 +504,9 @@ class AddToken extends Component {
     this.handleAddToken = this
       .handleAddToken
       .bind(this);
+    this.isValidImg = this
+      .isValidImg
+      .bind(this);
     this.state = {
       error: undefined
     }
@@ -530,12 +522,35 @@ class AddToken extends Component {
       .value
       .trim();
 
-    const error = this
-      .props
-      .handleAddToken(tokenUrl);
-    this.setState(() => ({error}));
+    var error = '';
+    var self = this;
+
+    this
+      .isValidImg(tokenUrl)
+      .then(function () {
+        error = self
+          .props
+          .handleAddToken(tokenUrl);
+      })
+      .catch(function () {
+        error = 'Please, enter a valid image URL'
+      })
+      .then(function (e) {
+        self.setState(() => ({error}));
+      })
     e.target.elements.tokenUrl.value = '';
   };
+
+  isValidImg(url) {
+    return new Promise(function (resolve, reject) {
+      var image = new Image();
+      image.onload = function () {
+        resolve(image)
+      };
+      image.onerror = image.onabort = reject;
+      image.src = url;
+    });
+  }
 
   render() {
     return (
