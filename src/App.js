@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { ShapeEnum } from './constants/enums';
 
 class App extends Component {
 
@@ -456,18 +457,6 @@ const Shape = (props) => {
   )
 }
 
-const ShapeEnum = {
-  SQUARE: 0,
-  ROUND: 1,
-  properties: {
-    0: {
-      name: "square"
-    },
-    1: {
-      name: "round"
-    }
-  }
-};
 
 const Tokens = (props) => {
   return (
