@@ -274,6 +274,18 @@ html {
     .mobile {
         display: none;
     }
+
+    .instructions {
+        margin: 0 auto;
+        max-width: 600px;
+        background: #fff8eb;
+        -webkit-box-shadow: 0 3px 5px rgb(230, 222, 195);
+    box-shadow: 0 3px 5px rgb(230, 222, 195);
+        padding: 8px;
+        h3, p{
+            text-align: center;
+        }
+    }
 }
 
 @media all and (max-width:768px) {
