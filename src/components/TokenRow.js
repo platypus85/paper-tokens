@@ -1,5 +1,5 @@
 import React from 'react';
-import {ShapeEnum, SizeEnum} from '../constants/enums';
+import {ShapeEnum, SizeEnum} from '../constants/Enums';
 
 const TableRow = (props) => {
     const token = props.token;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {ShapeEnum} from '../constants/enums';
+import {ShapeEnum} from '../constants/Enums';
 
 const Shape = (props) => {
     return (

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ShapeEnum, SizeEnum} from './constants/enums';
+import {ShapeEnum, SizeEnum} from './constants/Enums';
 import {AddToken} from './components/AddToken';
 import {Table} from './components/Table';
 import {Shape} from './components/Shape';
