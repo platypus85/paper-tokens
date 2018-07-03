@@ -1,5 +1,5 @@
 import React from 'react';
-import {TableRow} from './TokenRow';
+import {TableRow} from './TableRow';
 
 const Table = (props) => {
     return (
@@ -15,23 +15,26 @@ const Table = (props) => {
                             <th>Name</th>
                             <th>Size</th>
                             <th>Quantity</th>
-                            <th>Show Enumeration</th>
-                            <th>Enumeration Start</th>
-                            <th>Actions</th>
+                            <th>Show Count</th>
+                            <th>Count Start</th>
+                            <th>Monster Tent</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tfoot></tfoot>
                     <tbody>
                         {props
                             .tokens
-                            .map((token, i) => (<TableRow
+                            .map((token, i) => (
+                                <TableRow
                                 key={token.id}
                                 token={token}
                                 shape={props.shape}
                                 onUpdateTokenName={props.onUpdateTokenName}
-                                onUpdateSize={props.onUpdateSize}
+                                onUpdateTokenSize={props.onUpdateTokenSize}
                                 onUpdateTokenQuantity={props.onUpdateTokenQuantity}
-                                onUpdateTokenEnumeration={props.onUpdateTokenEnumeration}
+                                onUpdateTokenCount={props.onUpdateTokenCount}
+                                onUpdateTokenTents={props.onUpdateTokenTents}
                                 onUpdateTokenStartFrom={props.onUpdateTokenStartFrom}
                                 onRemoveToken={props.onRemoveToken}/>))}
                     </tbody>

@@ -8,7 +8,7 @@ const TableRow = (props) => {
         <tr>
             <td className="token-image">
                 <div className={"token medium " + ShapeEnum.properties[shape].name}>
-                    <img alt={token.name} src={token.url}/> {token.enumeration && <div className="number">#</div>}
+                    <img alt={token.name} src={token.url}/> {token.count && <div className="number">#</div>}
                 </div>
             </td>
             <td className="token-name">
@@ -26,7 +26,7 @@ const TableRow = (props) => {
                     <select
                         className="form-control"
                         value={SizeEnum.properties[token.size].value}
-                        onChange={(event) => props.onUpdateSize(token, event.target.value)}>
+                        onChange={(event) => props.onUpdateTokenSize(token, event.target.value)}>
                         <option value="0">Tiny (0.75x0.75 in)</option>
                         <option value="1">Small (1x1 in)</option>
                         <option value="2">Medium (1x1 in)</option>
@@ -48,28 +48,26 @@ const TableRow = (props) => {
                     min="1"/>
             </td>
             <td className="token-showEnumeration">
-                <label className="mobile">Show Enum.:</label>
-
+                <label className="mobile">Count:</label>
                 <div className="btn-group btn-group-toggle" data-toggle="buttons">
-
                     <label
-                        className={token.enumeration === false
+                        className={token.count === false
                         ? "btn btn-primary active"
                         : "btn btn-primary"}>
                         <input
                             onClick={() => {
-                            props.onUpdateTokenEnumeration(token, false)
+                            props.onUpdateTokenCount(token, false)
                         }}
                             type="checkbox"/>
                         <i className="far fa-eye-slash"></i>
                     </label>
                     <label
-                        className={token.enumeration === true
+                        className={token.count === true
                         ? "btn btn-primary active"
                         : "btn btn-primary"}>
                         <input
                             onClick={() => {
-                            props.onUpdateTokenEnumeration(token, true)
+                            props.onUpdateTokenCount(token, true)
                         }}
                             type="checkbox"/>
                         <i className="far fa-eye"></i>
@@ -77,11 +75,11 @@ const TableRow = (props) => {
                 </div>
             </td>
             <td className="token-startFrom">
-                <label className="mobile">Enum. start:</label>
+                <label className="mobile">Enum. Start:</label>
                 <input
                     className="form-control"
                     type="number"
-                    disabled={token.enumeration
+                    disabled={token.count
                     ? ""
                     : "disabled"}
                     onChange={(event) => props.onUpdateTokenStartFrom(token, event.target.value)}
@@ -89,8 +87,35 @@ const TableRow = (props) => {
                     defaultValue={token.startFrom}
                     min="1"/>
             </td>
+            <td className="token-showTents">
+                <label className="mobile">Monster Tents:</label>
+                <div className="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label
+                        className={token.showTents === false
+                        ? "btn btn-primary active"
+                        : "btn btn-primary"}>
+                        <input
+                            onClick={() => {
+                            props.onUpdateTokenTents(token, false)
+                        }}
+                            type="checkbox"/>
+                        <i className="far fa-eye-slash"></i>
+                    </label>
+                    <label
+                        className={token.showTents === true
+                        ? "btn btn-primary active"
+                        : "btn btn-primary"}>
+                        <input
+                            onClick={() => {
+                            props.onUpdateTokenTents(token, true)
+                        }}
+                            type="checkbox"/>
+                        <i className="far fa-eye"></i>
+                    </label>
+                </div>
+            </td>
             <td className="delete">
-                <label className="mobile">Actions:</label>
+                <label className="mobile">Delete:</label>
                 <button
                     type="button"
                     className="btn btn-warning"

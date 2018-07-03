@@ -37,6 +37,9 @@ class App extends Component {
     this.updateTokenEnumeration = this
       .updateTokenEnumeration
       .bind(this);
+      this.updateTokenTents= this
+      .updateTokenTents
+      .bind(this);
     this.state = {
       tokens: [],
       shape: ShapeEnum.SQUARE
@@ -80,11 +83,12 @@ class App extends Component {
           tokens={this.state.tokens}
           onRemoveToken={this.removeToken}
           onRemoveAllTokens={this.removeAllTokens}
-          onUpdateSize={this.updateSize}
+          onUpdateTokenSize={this.updateSize}
           onUpdateTokenQuantity={this.updateTokenQuantity}
           onUpdateTokenName={this.updateTokenName}
           onUpdateTokenStartFrom={this.updateTokenStartFrom}
-          onUpdateTokenEnumeration={this.updateTokenEnumeration}/>
+          onUpdateTokenCount={this.updateTokenEnumeration}
+          onUpdateTokenTents={this.updateTokenTents}/>
         <Tokens shape={this.state.shape} tokens={this.state.tokens}/>
         <Tents tokens={this.state.tokens}/>
       </div>
@@ -201,9 +205,10 @@ class App extends Component {
       url: tokenUrl,
       size: SizeEnum.MEDIUM,
       name: "New Token",
-      enumeration: true,
+      count: true,
       startFrom: 1,
-      quantity: 1
+      quantity: 1,
+      showTents: true
     }
 
     this.setState((prevState) => {
@@ -222,11 +227,24 @@ class App extends Component {
       .slice();
     updatedEnumerationTokens.forEach((t, index) => {
       if (t === token) {
-        t.enumeration = value;
+        t.count = value;
       }
     });
 
     this.setState({token: updatedEnumerationTokens})
+  }
+
+  updateTokenTents(token, value) {
+    let updatedTokensTents = this
+      .state
+      .tokens
+      .slice();
+      updatedTokensTents.forEach((t, index) => {
+      if (t === token) {
+        t.showTents = value;
+      }
+    });
+    this.setState({token: updatedTokensTents})
   }
 }
 

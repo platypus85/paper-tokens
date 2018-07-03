@@ -48,6 +48,18 @@ html {
         main.container {
             padding: 30px;
         }
+        #tokens-table {
+            table-layout: fixed;
+            th {
+                vertical-align: middle !important;
+                text-align: center;
+            }
+            .btn-group>.btn:last-child:not(:first-child),
+            .btn-group>.dropdown-toggle:not(:first-child),
+            .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+                width: 50%;
+            }
+        }
         .token {
             display: inline-block;
             page-break-inside: avoid;
@@ -159,7 +171,6 @@ html {
             }
         }
         #printed-tokens-tents {
-            
             .tent {
                 width: 6cm;
                 height: 13cm;
@@ -391,7 +402,8 @@ html {
         }
         .form-control,
         .btn-group-toggle,
-        .btn-outline-danger {
+        .btn-outline-danger,
+        .btn.btn-warning {
             display: inline-block;
             width: 60%;
         }
@@ -435,8 +447,7 @@ html {
         .instructions {
             display: none !important
         }
-
-        .tent p{
+        .tent p {
             display: block !important
         }
     }
