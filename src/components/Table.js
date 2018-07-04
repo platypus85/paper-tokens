@@ -15,9 +15,10 @@ const Table = (props) => {
                             <th>Name</th>
                             <th>Size</th>
                             <th>Quantity</th>
-                            <th>Show Count</th>
                             <th>Count Start</th>
+                            <th>Count</th>
                             <th>Monster Tent</th>
+                            <th>Token</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -25,8 +26,7 @@ const Table = (props) => {
                     <tbody>
                         {props
                             .tokens
-                            .map((token, i) => (
-                                <TableRow
+                            .map((token, i) => (<TableRow
                                 key={token.id}
                                 token={token}
                                 shape={props.shape}
@@ -34,8 +34,9 @@ const Table = (props) => {
                                 onUpdateTokenSize={props.onUpdateTokenSize}
                                 onUpdateTokenQuantity={props.onUpdateTokenQuantity}
                                 onUpdateTokenCount={props.onUpdateTokenCount}
-                                onUpdateTokenTents={props.onUpdateTokenTents}
-                                onUpdateTokenStartFrom={props.onUpdateTokenStartFrom}
+                                onUpdateTokenTentVisibility={props.onUpdateTokenTentVisibility}
+                                onUpdateTokenVisibility={props.onUpdateTokenVisibility}
+                                onUpdateTokenCountStart={props.onUpdateTokenCountStart}
                                 onRemoveToken={props.onRemoveToken}/>))}
                     </tbody>
                 </table>

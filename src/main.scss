@@ -152,6 +152,18 @@ html {
                 text-align: center;
                 td {
                     vertical-align: middle;
+                    &.token-image {
+                        &.greyscale {
+                            -webkit-filter: grayscale(100%);
+                            -moz-filter: grayscale(100%);
+                            -o-filter: grayscale(100%);
+                            -ms-filter: grayscale(100%);
+                            filter: grayscale(100%);
+                            opacity: 0.4;
+                            filter: alpha(opacity=40);
+                            /* msie */
+                        }
+                    }
                 }
             }
         }

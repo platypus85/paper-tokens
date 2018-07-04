@@ -22,8 +22,8 @@ class App extends Component {
     this.updateTokenQuantity = this
       .updateTokenQuantity
       .bind(this);
-    this.updateTokenStartFrom = this
-      .updateTokenStartFrom
+    this.updateTokenCountStart = this
+      .updateTokenCountStart
       .bind(this);
     this.handleAddToken = this
       .handleAddToken
@@ -34,11 +34,14 @@ class App extends Component {
     this.updateShape = this
       .updateShape
       .bind(this);
-    this.updateTokenEnumeration = this
-      .updateTokenEnumeration
+    this.updateTokenCountVisibility = this
+      .updateTokenCountVisibility
       .bind(this);
-      this.updateTokenTents= this
-      .updateTokenTents
+    this.updateTokenTentVisibility = this
+      .updateTokenTentVisibility
+      .bind(this);
+    this.updateTokenVisibility = this
+      .updateTokenVisibility
       .bind(this);
     this.state = {
       tokens: [],
@@ -86,9 +89,10 @@ class App extends Component {
           onUpdateTokenSize={this.updateSize}
           onUpdateTokenQuantity={this.updateTokenQuantity}
           onUpdateTokenName={this.updateTokenName}
-          onUpdateTokenStartFrom={this.updateTokenStartFrom}
-          onUpdateTokenCount={this.updateTokenEnumeration}
-          onUpdateTokenTents={this.updateTokenTents}/>
+          onUpdateTokenCountStart={this.updateTokenCountStart}
+          onUpdateTokenCount={this.updateTokenCountVisibility}
+          onUpdateTokenTentVisibility={this.updateTokenTentVisibility}
+          onUpdateTokenVisibility={this.updateTokenVisibility}/>
         <Tokens shape={this.state.shape} tokens={this.state.tokens}/>
         <Tents tokens={this.state.tokens}/>
       </div>
@@ -148,7 +152,7 @@ class App extends Component {
     }, 500);
   }
 
-  updateTokenStartFrom(token, sf) {
+  updateTokenCountStart(token, sf) {
     let updatedStartFrom = this
       .state
       .tokens
@@ -208,7 +212,8 @@ class App extends Component {
       count: true,
       startFrom: 1,
       quantity: 1,
-      showTents: true
+      showTent: true,
+      showToken: true
     }
 
     this.setState((prevState) => {
@@ -220,31 +225,44 @@ class App extends Component {
     });
   }
 
-  updateTokenEnumeration(token, value) {
-    let updatedEnumerationTokens = this
+  updateTokenCountVisibility(token, value) {
+    let updatedTokensCountVisibility = this
       .state
       .tokens
       .slice();
-    updatedEnumerationTokens.forEach((t, index) => {
+      updatedTokensCountVisibility.forEach((t, index) => {
       if (t === token) {
         t.count = value;
       }
     });
 
-    this.setState({token: updatedEnumerationTokens})
+    this.setState({token: updatedTokensCountVisibility})
   }
 
-  updateTokenTents(token, value) {
+  updateTokenTentVisibility(token, value) {
     let updatedTokensTents = this
       .state
       .tokens
       .slice();
-      updatedTokensTents.forEach((t, index) => {
+    updatedTokensTents.forEach((t, index) => {
       if (t === token) {
-        t.showTents = value;
+        t.showTent = value;
       }
     });
     this.setState({token: updatedTokensTents})
+  }
+
+  updateTokenVisibility(token, value) {
+    let updatedTokensVisibility = this
+      .state
+      .tokens
+      .slice();
+    updatedTokensVisibility.forEach((t, index) => {
+      if (t === token) {
+        t.showToken = value;
+      }
+    });
+    this.setState({token: updatedTokensVisibility})
   }
 }
 

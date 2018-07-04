@@ -6,7 +6,10 @@ const TableRow = (props) => {
     const shape = props.shape;
     return (
         <tr>
-            <td className="token-image">
+            <td
+                className={"token-image " + (token.showToken
+                ? " "
+                : "greyscale")}>
                 <div className={"token medium " + ShapeEnum.properties[shape].name}>
                     <img alt={token.name} src={token.url}/> {token.count && <div className="number">#</div>}
                 </div>
@@ -47,7 +50,20 @@ const TableRow = (props) => {
                     defaultValue={token.quantity}
                     min="1"/>
             </td>
-            <td className="token-showEnumeration">
+            <td className="token-startFrom">
+                <label className="mobile">Count Start:</label>
+                <input
+                    className="form-control"
+                    type="number"
+                    disabled={token.count
+                    ? ""
+                    : "disabled"}
+                    onChange={(event) => props.onUpdateTokenCountStart(token, event.target.value)}
+                    name="startFrom"
+                    defaultValue={token.startFrom || 1}
+                    min="1"/>
+            </td>
+            <td className="token-showCount">
                 <label className="mobile">Count:</label>
                 <div className="btn-group btn-group-toggle" data-toggle="buttons">
                     <label
@@ -74,40 +90,54 @@ const TableRow = (props) => {
                     </label>
                 </div>
             </td>
-            <td className="token-startFrom">
-                <label className="mobile">Enum. Start:</label>
-                <input
-                    className="form-control"
-                    type="number"
-                    disabled={token.count
-                    ? ""
-                    : "disabled"}
-                    onChange={(event) => props.onUpdateTokenStartFrom(token, event.target.value)}
-                    name="startFrom"
-                    defaultValue={token.startFrom}
-                    min="1"/>
-            </td>
-            <td className="token-showTents">
+            <td className="token-showTent">
                 <label className="mobile">Monster Tents:</label>
                 <div className="btn-group btn-group-toggle" data-toggle="buttons">
                     <label
-                        className={token.showTents === false
+                        className={token.showTent === false
                         ? "btn btn-primary active"
                         : "btn btn-primary"}>
                         <input
                             onClick={() => {
-                            props.onUpdateTokenTents(token, false)
+                            props.onUpdateTokenTentVisibility(token, false)
                         }}
                             type="checkbox"/>
                         <i className="far fa-eye-slash"></i>
                     </label>
                     <label
-                        className={token.showTents === true
+                        className={token.showTent === true
                         ? "btn btn-primary active"
                         : "btn btn-primary"}>
                         <input
                             onClick={() => {
-                            props.onUpdateTokenTents(token, true)
+                            props.onUpdateTokenTentVisibility(token, true)
+                        }}
+                            type="checkbox"/>
+                        <i className="far fa-eye"></i>
+                    </label>
+                </div>
+            </td>
+            <td className="token-showTokens">
+                <label className="mobile">Token:</label>
+                <div className="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label
+                        className={token.showToken === false
+                        ? "btn btn-primary active"
+                        : "btn btn-primary"}>
+                        <input
+                            onClick={() => {
+                            props.onUpdateTokenVisibility(token, false)
+                        }}
+                            type="checkbox"/>
+                        <i className="far fa-eye-slash"></i>
+                    </label>
+                    <label
+                        className={token.showToken === true
+                        ? "btn btn-primary active"
+                        : "btn btn-primary"}>
+                        <input
+                            onClick={() => {
+                            props.onUpdateTokenVisibility(token, true)
                         }}
                             type="checkbox"/>
                         <i className="far fa-eye"></i>
