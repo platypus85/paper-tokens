@@ -75,18 +75,18 @@ const TableRow = (props) => {
                             props.onUpdateTokenCount(token, false)
                         }}
                             type="checkbox"/>
-                        <i className="far fa-eye-slash"></i>
+                        <i className="fas fa-list-ol"></i>
                     </label>
                     <label
                         className={token.count === true
-                        ? "btn btn-primary active"
-                        : "btn btn-primary"}>
+                        ? "btn btn-success active"
+                        : "btn btn-success"}>
                         <input
                             onClick={() => {
                             props.onUpdateTokenCount(token, true)
                         }}
                             type="checkbox"/>
-                        <i className="far fa-eye"></i>
+                        <i className="fas fa-list-ol"></i>
                     </label>
                 </div>
             </td>
@@ -102,18 +102,18 @@ const TableRow = (props) => {
                             props.onUpdateTokenTentVisibility(token, false)
                         }}
                             type="checkbox"/>
-                        <i className="far fa-eye-slash"></i>
+                        <i className="far fa-map"></i>
                     </label>
                     <label
                         className={token.showTent === true
-                        ? "btn btn-primary active"
-                        : "btn btn-primary"}>
+                        ? "btn btn-success active"
+                        : "btn btn-success"}>
                         <input
                             onClick={() => {
                             props.onUpdateTokenTentVisibility(token, true)
                         }}
                             type="checkbox"/>
-                        <i className="far fa-eye"></i>
+                        <i className="far fa-map"></i>
                     </label>
                 </div>
             </td>
@@ -129,18 +129,18 @@ const TableRow = (props) => {
                             props.onUpdateTokenVisibility(token, false)
                         }}
                             type="checkbox"/>
-                        <i className="far fa-eye-slash"></i>
+                        <i className="fas fa-user-circle"></i>
                     </label>
                     <label
                         className={token.showToken === true
-                        ? "btn btn-primary active"
-                        : "btn btn-primary"}>
+                        ? "btn btn-success active"
+                        : "btn btn-success"}>
                         <input
                             onClick={() => {
                             props.onUpdateTokenVisibility(token, true)
                         }}
                             type="checkbox"/>
-                        <i className="far fa-eye"></i>
+                        <i className="fas fa-user-circle"></i>
                     </label>
                 </div>
             </td>
