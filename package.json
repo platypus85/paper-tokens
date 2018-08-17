@@ -8,6 +8,7 @@
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-dropbox-chooser": "0.0.5",
     "react-scripts": "1.1.4"
   },
   "scripts": {

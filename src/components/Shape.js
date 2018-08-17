@@ -8,7 +8,7 @@ const Shape = (props) => {
             className={props.tokens.length > 0
             ? "show"
             : "hide"}>
-            <p>Select a shape for the tokens:</p>
+            <span>Select a shape for the tokens:&nbsp;&nbsp;</span>
             <div className="btn-group btn-group-toggle" data-toggle="buttons">
                 <label
                     className={props.shape === ShapeEnum.SQUARE

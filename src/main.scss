@@ -182,78 +182,76 @@ html {
                 float: left;
             }
         }
-        #printed-tokens-tents {
-            .tent {
-                width: 6cm;
-                height: 13cm;
-                border: $defaultBorder;
-                border-radius: 5px;
-                display: inline-block;
-                background: white;
-                page-break-inside: avoid;
-                .side {
-                    width: 6cm !important;
-                    height: 6.5cm !important;
-                    position: relative;
-                    .name {
+        .tent {
+            width: 6cm;
+            height: 13cm;
+            border: $defaultBorder;
+            border-radius: 5px;
+            display: inline-block;
+            background: white;
+            page-break-inside: avoid;
+            .side {
+                width: 6cm !important;
+                height: 6.5cm !important;
+                position: relative;
+                .name {
+                    width: 6cm;
+                    height: 1.5cm;
+                    display: block;
+                    p {
+                        margin: 0;
+                        text-align: center;
+                        vertical-align: middle;
+                        line-height: 1.5cm;
                         width: 6cm;
-                        height: 1.5cm;
-                        display: block;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+                &.front {
+                    overflow: hidden;
+                    .name {
+                        border-bottom: $defaultBorder;
+                        border-top: $defaultBorder;
+                    }
+                    .image {
+                        width: 6cm;
+                        height: 5cm;
+                        text-align: center;
+                        line-height: 5cm;
+                    }
+                    img.creature {
+                        max-width: 5.5cm;
+                        max-height: 4.5cm;
+                        margin: auto;
+                        vertical-align: middle;
+                    }
+                }
+                &.back {
+                    .name {
+                        position: absolute;
+                        border-top: $defaultBorder;
+                        bottom: 0;
+                        p {
+                            -webkit-transform: rotate(-180deg);
+                            -moz-transform: rotate(-180deg);
+                            -o-transform: rotate(-180deg);
+                            transform: rotate(-180deg);
+                            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+                        }
+                    }
+                    .notes {
                         p {
                             margin: 0;
-                            text-align: center;
-                            vertical-align: middle;
-                            line-height: 1.5cm;
-                            width: 6cm;
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        }
-                    }
-                    &.front {
-                        overflow: hidden;
-                        .name {
-                            border-bottom: $defaultBorder;
-                            border-top: $defaultBorder;
-                        }
-                        .image {
-                            width: 6cm;
-                            height: 5cm;
-                            text-align: center;
-                            line-height: 5cm;
-                        }
-                        img.creature {
-                            max-width: 5.5cm;
-                            max-height: 4.5cm;
-                            margin: auto;
-                            vertical-align: middle;
-                        }
-                    }
-                    &.back {
-                        .name {
                             position: absolute;
-                            border-top: $defaultBorder;
-                            bottom: 0;
-                            p {
-                                -webkit-transform: rotate(-180deg);
-                                -moz-transform: rotate(-180deg);
-                                -o-transform: rotate(-180deg);
-                                transform: rotate(-180deg);
-                                filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
-                            }
-                        }
-                        .notes {
-                            p {
-                                margin: 0;
-                                position: absolute;
-                                bottom: 1.6cm;
-                                right: 0.2cm;
-                                -webkit-transform: rotate(-180deg);
-                                -moz-transform: rotate(-180deg);
-                                -o-transform: rotate(-180deg);
-                                transform: rotate(-180deg);
-                                filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
-                            }
+                            bottom: 1.6cm;
+                            right: 0.2cm;
+                            -webkit-transform: rotate(-180deg);
+                            -moz-transform: rotate(-180deg);
+                            -o-transform: rotate(-180deg);
+                            transform: rotate(-180deg);
+                            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
                         }
                     }
                 }
@@ -284,16 +282,31 @@ html {
                 color: white;
             }
         }
-        #add-link-container {
-            background: transparent url(../images/scroll.png) no-repeat;
+        #add-token-container {
             text-align: center;
-            margin: 40px auto;
-            max-width: 450px;
-            padding: 30px 30px 2px 30px;
-            background-size: 100% 100%;
-            .url-input {
-                width: 80%;
-                margin-bottom: 10px;
+            #add-link-container {
+                background: transparent url(../images/scroll.png) no-repeat;
+                text-align: center;
+                margin: 25px auto;
+                max-width: 450px;
+                padding: 30px 30px 2px 30px;
+                background-size: 100% 100%;
+                .url-input {
+                    width: 80%;
+                    margin-bottom: 10px;
+                }
+            }
+            .dropbox-button {
+                display: block;
+                max-width: 300px;
+                margin: 0 auto;
+                color: white;
+                border-radius: 6px;
+                border: 1px solid #0361a5;
+                padding: 10px;
+                text-align: center;
+                cursor: pointer;
+                background: #0385e2;
             }
         }
         #donate-form {
@@ -301,7 +314,7 @@ html {
         }
         #shape-selector {
             text-align: center;
-            margin-bottom: 30px;
+            margin: 30px;
             label {
                 i {
                     font-size: 40px;
@@ -387,9 +400,123 @@ html {
             }
         }
     }
+    /* Absolute Center Spinner */
+    .loading {
+        position: fixed;
+        z-index: 999;
+        height: 2em;
+        width: 2em;
+        overflow: show;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+    /* Transparent Overlay */
+    .loading:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+    /* :not(:required) hides these rules from IE9 and below */
+    .loading:not(:required) {
+        /* hide "loading..." text */
+        font: 0/0 a;
+        color: transparent;
+        text-shadow: none;
+        background-color: transparent;
+        border: 0;
+    }
+    .loading:not(:required):after {
+        content: '';
+        display: block;
+        font-size: 10px;
+        width: 1em;
+        height: 1em;
+        margin-top: -0.5em;
+        -webkit-animation: spinner 1500ms infinite linear;
+        -moz-animation: spinner 1500ms infinite linear;
+        -ms-animation: spinner 1500ms infinite linear;
+        -o-animation: spinner 1500ms infinite linear;
+        animation: spinner 1500ms infinite linear;
+        border-radius: 0.5em;
+        -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+        box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+    }
+    /* Animation */
+    @-webkit-keyframes spinner {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    @-moz-keyframes spinner {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    @-o-keyframes spinner {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes spinner {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -moz-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -moz-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            -o-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
 }
 
-@media all and (max-width:768px) {
+@media all and (max-width:992px) {
     #tokens-table {
         border-collapse: separate;
         border-spacing: 10px;
@@ -423,7 +550,8 @@ html {
 }
 
 @media screen {
-    .printable * {
+    .printable *,
+    #printed-tokens-tents {
         display: none !important;
     }
 }
@@ -431,6 +559,7 @@ html {
 @media print {
     html {
         body {
+            margin: 0px 0px 0px 0px;
             background: white !important;
             main {
                 &.container {
@@ -439,9 +568,11 @@ html {
                 }
             }
         }
-        .printable * {
-            display: inline-block !important;
-        }
+        .printable:last-child {
+  page-break-before: none;
+  page-break-after: none;
+  page-break-inside: avoid;
+       }
         #tokens-table,
         #add-link-container,
         button#remove-all,
@@ -456,7 +587,8 @@ html {
         #shape-selector,
         .wrap-collabsible,
         #shape-selector,
-        .instructions {
+        .instructions,
+        .dropbox-button {
             display: none !important
         }
         .tent p {

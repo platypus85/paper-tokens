@@ -4,7 +4,6 @@ import {AddToken} from './components/AddToken';
 import {Table} from './components/Table';
 import {Shape} from './components/Shape';
 import {Tokens} from './components/Tokens';
-import {Tents} from './components/Tents';
 
 class App extends Component {
 
@@ -94,7 +93,6 @@ class App extends Component {
           onUpdateTokenTentVisibility={this.updateTokenTentVisibility}
           onUpdateTokenVisibility={this.updateTokenVisibility}/>
         <Tokens shape={this.state.shape} tokens={this.state.tokens}/>
-        <Tents tokens={this.state.tokens}/>
       </div>
     );
   }

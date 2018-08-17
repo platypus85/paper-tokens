@@ -11,6 +11,19 @@ const ShapeEnum = {
   }
 };
 
+const DropboxLoadingStatusEnum = {
+  LOADING: 0,
+  COMPLETED: 1,
+  properties: {
+    0: {
+      name: "loading"
+    },
+    1: {
+      name: "completed"
+    }
+  }
+};
+
 const SizeEnum = {
   TINY: 0,
   SMALL: 1,
@@ -58,4 +71,4 @@ const SizeEnum = {
   }
 };
 
-export {ShapeEnum, SizeEnum};
+export {ShapeEnum, SizeEnum, DropboxLoadingStatusEnum};
