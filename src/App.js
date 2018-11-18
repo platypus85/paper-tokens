@@ -42,6 +42,9 @@ class App extends Component {
     this.updateTokenVisibility = this
       .updateTokenVisibility
       .bind(this);
+    this.updatePawnVisibility = this
+      .updatePawnVisibility
+      .bind(this);
     this.state = {
       tokens: [],
       shape: ShapeEnum.SQUARE
@@ -91,7 +94,8 @@ class App extends Component {
           onUpdateTokenCountStart={this.updateTokenCountStart}
           onUpdateTokenCount={this.updateTokenCountVisibility}
           onUpdateTokenTentVisibility={this.updateTokenTentVisibility}
-          onUpdateTokenVisibility={this.updateTokenVisibility}/>
+          onUpdateTokenVisibility={this.updateTokenVisibility}
+          onUpdatePawnVisibility={this.updatePawnVisibility}/>
         <Tokens shape={this.state.shape} tokens={this.state.tokens}/>
       </div>
     );
@@ -206,12 +210,13 @@ class App extends Component {
       id: Math.random(),
       url: tokenUrl,
       size: SizeEnum.MEDIUM,
-      name: "New Token",
+      name: "Creature",
       count: true,
       startFrom: 1,
       quantity: 1,
       showTent: true,
-      showToken: true
+      showToken: true,
+      showPawn: true
     }
 
     this.setState((prevState) => {
@@ -228,7 +233,7 @@ class App extends Component {
       .state
       .tokens
       .slice();
-      updatedTokensCountVisibility.forEach((t, index) => {
+    updatedTokensCountVisibility.forEach((t, index) => {
       if (t === token) {
         t.count = value;
       }
@@ -261,6 +266,19 @@ class App extends Component {
       }
     });
     this.setState({token: updatedTokensVisibility})
+  }
+
+  updatePawnVisibility(token, value) {
+    let updatedTokensPawnsVisibility = this
+      .state
+      .tokens
+      .slice();
+    updatedTokensPawnsVisibility.forEach((t, index) => {
+      if (t === token) {
+        t.showPawn = value;
+      }
+    });
+    this.setState({token: updatedTokensPawnsVisibility})
   }
 }
 

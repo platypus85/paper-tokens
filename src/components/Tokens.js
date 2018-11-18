@@ -21,6 +21,7 @@ class Tokens extends Component {
         <div className="printable" id="printed-tokens">
           {this.createTokensList(this.props)}
           {this.createTokensTents(this.props)}
+          {this.createPawnsList(this.props)}
         </div>
       </div>
     )
@@ -48,6 +49,7 @@ class Tokens extends Component {
     })
     return tokenList;
   }
+
   createTokensTents(props) {
     let tents = [];
     var tks = props
@@ -79,8 +81,46 @@ class Tokens extends Component {
     })
     return tents;
   }
+
+  createPawnsList(props) {
+    let pawns = [];
+    var pws = props
+      .tokens
+      .slice();
+    pws.sort((a, b) => SizeEnum.properties[a.size].value - SizeEnum.properties[b.size].value).forEach((pawn, i) => {
+      if (pawn.showPawn) {
+        const start = parseInt(pawn.startFrom, 10);
+        const end = start + parseInt(pawn.quantity, 10);
+        for (i = start; i < end; i++) {
+          pawns.push(
+            <div
+              className={"pawn-container " + SizeEnum.properties[pawn.size].name}
+              key={pawn.id + i || pawn.url + "" + i}>
+              <div className="back">
+                <div className="base"></div>
+                <div className="pawn-wrapper">
+                {pawn.count && <div className="number">{i}</div>}
+                  <div className="pawn">
+                    <img alt={pawn.name} src={pawn.url} className="creature"/>
+                  </div>
+                </div>
+              </div>
+              <div className="front">
+                <div className="pawn-wrapper">
+                {pawn.count && <div className="number">{i}</div>}
+                  <div className="pawn">
+                    <img alt={pawn.name} src={pawn.url} className="creature"/>
+                  </div>
+                </div>
+                <div className="base"></div>
+              </div>
+            </div>
+          )
+        }
+      }
+    })
+    return pawns;
+  }
 };
-
-
 
 export {Tokens};

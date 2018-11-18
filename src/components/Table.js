@@ -19,6 +19,7 @@ const Table = (props) => {
                             <th>Count</th>
                             <th>Monster Tent</th>
                             <th>Token</th>
+                            <th>Paper Pawn</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -36,6 +37,7 @@ const Table = (props) => {
                                 onUpdateTokenCount={props.onUpdateTokenCount}
                                 onUpdateTokenTentVisibility={props.onUpdateTokenTentVisibility}
                                 onUpdateTokenVisibility={props.onUpdateTokenVisibility}
+                                onUpdatePawnVisibility={props.onUpdatePawnVisibility}
                                 onUpdateTokenCountStart={props.onUpdateTokenCountStart}
                                 onRemoveToken={props.onRemoveToken}/>))}
                     </tbody>
