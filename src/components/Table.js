@@ -23,7 +23,7 @@ const Table = (props) => {
                             <th>Delete</th>
                         </tr>
                         <tr id="bulk-selection">
-                            <th colspan="5">Bulk Selection</th>
+                            <th colSpan="5">Bulk Selection</th>
                             <th>
                                 <div className="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label className="btn btn-primary">
