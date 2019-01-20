@@ -15,6 +15,18 @@ class App extends Component {
     this.removeAllTokens = this
       .removeAllTokens
       .bind(this);
+    this.updateAllPawnsVisibility = this
+      .updateAllPawnsVisibility
+      .bind(this);
+    this.updateAllTokensVisibility = this
+      .updateAllTokensVisibility
+      .bind(this);
+    this.updateAllTokenTentsVisibility = this
+      .updateAllTokenTentsVisibility
+      .bind(this);
+    this.updateAllTokensCountVisibility = this
+      .updateAllTokensCountVisibility
+      .bind(this);
     this.updateSize = this
       .updateSize
       .bind(this);
@@ -88,6 +100,10 @@ class App extends Component {
           tokens={this.state.tokens}
           onRemoveToken={this.removeToken}
           onRemoveAllTokens={this.removeAllTokens}
+          onUpdateAllPawnsVisibility={this.updateAllPawnsVisibility}
+          onUpdateAllTokensVisibility={this.updateAllTokensVisibility}
+          onUpdateAllTokenTentsVisibility={this.updateAllTokenTentsVisibility}
+          onUpdateAllTokensCountVisibility={this.updateAllTokensCountVisibility}
           onUpdateTokenSize={this.updateSize}
           onUpdateTokenQuantity={this.updateTokenQuantity}
           onUpdateTokenName={this.updateTokenName}
@@ -238,7 +254,17 @@ class App extends Component {
         t.count = value;
       }
     });
+    this.setState({token: updatedTokensCountVisibility})
+  }
 
+  updateAllTokensCountVisibility(value) {
+    let updatedTokensCountVisibility = this
+      .state
+      .tokens
+      .slice();
+    updatedTokensCountVisibility.forEach((t, index) => {
+      t.count = value;
+    });
     this.setState({token: updatedTokensCountVisibility})
   }
 
@@ -251,6 +277,17 @@ class App extends Component {
       if (t === token) {
         t.showTent = value;
       }
+    });
+    this.setState({token: updatedTokensTents})
+  }
+
+  updateAllTokenTentsVisibility(value) {
+    let updatedTokensTents = this
+      .state
+      .tokens
+      .slice();
+    updatedTokensTents.forEach((t, index) => {
+      t.showTent = value;
     });
     this.setState({token: updatedTokensTents})
   }
@@ -268,6 +305,17 @@ class App extends Component {
     this.setState({token: updatedTokensVisibility})
   }
 
+  updateAllTokensVisibility(value) {
+    let updatedTokensVisibility = this
+      .state
+      .tokens
+      .slice();
+    updatedTokensVisibility.forEach((t, index) => {
+      t.showToken = value;
+    });
+    this.setState({token: updatedTokensVisibility})
+  }
+
   updatePawnVisibility(token, value) {
     let updatedTokensPawnsVisibility = this
       .state
@@ -277,6 +325,17 @@ class App extends Component {
       if (t === token) {
         t.showPawn = value;
       }
+    });
+    this.setState({token: updatedTokensPawnsVisibility})
+  }
+
+  updateAllPawnsVisibility(value) {
+    let updatedTokensPawnsVisibility = this
+      .state
+      .tokens
+      .slice();
+    updatedTokensPawnsVisibility.forEach((t, index) => {
+      t.showPawn = value;
     });
     this.setState({token: updatedTokensPawnsVisibility})
   }
