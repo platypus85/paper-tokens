@@ -34,6 +34,9 @@ html {
       display: none; }
     html body main.container {
       padding: 30px; }
+    html body #links-table {
+      max-width: 500px;
+      margin: 20px auto; }
     html body #tokens-table {
       table-layout: fixed; }
       html body #tokens-table thead tr:nth-child(1) th {
