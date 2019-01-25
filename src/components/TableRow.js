@@ -144,6 +144,33 @@ const TableRow = (props) => {
                     </label>
                 </div>
             </td>
+            <td className="token-showPawns">
+                <label className="mobile">Paper Pawn:</label>
+                <div className="btn-group btn-group-toggle" data-toggle="buttons">
+                    <label
+                        className={token.showPawn === false
+                        ? "btn btn-primary active"
+                        : "btn btn-primary"}>
+                        <input
+                            onClick={() => {
+                            props.onUpdatePawnVisibility(token, false)
+                        }}
+                            type="checkbox"/>
+                        <i className="fas fa-chess-pawn"></i>
+                    </label>
+                    <label
+                        className={token.showPawn === true
+                        ? "btn btn-success active"
+                        : "btn btn-success"}>
+                        <input
+                            onClick={() => {
+                            props.onUpdatePawnVisibility(token, true)
+                        }}
+                            type="checkbox"/>
+                        <i className="fas fa-chess-pawn"></i>
+                    </label>
+                </div>
+            </td>
             <td className="delete">
                 <label className="mobile">Delete:</label>
                 <button

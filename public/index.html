@@ -22,10 +22,10 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
     crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" media="screen, print" href="%PUBLIC_URL%/css/bootstrap/css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" media="screen, print" href="%PUBLIC_URL%/css/bootstrap/css/bootstrap-theme.min.css"
-  />
+  <link rel="stylesheet" type="text/css" media="screen, print" href="%PUBLIC_URL%/css/bootstrap/css/bootstrap-theme.min.css" />
   <link rel="stylesheet" type="text/css" media="screen, print" href="%PUBLIC_URL%/css/main.css" />
-
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="https://unpkg.com/sticky-table-headers"></script>
   <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -82,17 +82,21 @@
   <main role="main" class="container">
     <p>
       <strong>Paper Tokens Generator</strong> is a
-      <strong>free</strong> tool to easily generate and print round or squared creature tokens to be used with RPGs or Tabletop games.
+      <strong>free</strong> tool to easily generate and print round or squared creature tokens to be used with RPGs or
+      Tabletop games.
       These tokens can be easily glued to any round or squared supports like
-      <a target="_blank" href="https://www.amazon.com.au/gp/offer-listing/B01E95PW2W/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B01E95PW2W&linkCode=am2&tag=papertokensge-22&linkId=6f3e7085e3b9c66e1f4dc034046a12d7">wooden circles</a>, or even better,
-      <img src="//ir-au.amazon-adsystem.com/e/ir?t=papertokensge-22&l=am2&o=36&a=B01E95PW2W" width="1" height="1" border="0" alt=""
-        style="border:none !important; margin:0px !important;" />
-      <a target="_blank" href="https://www.amazon.com.au/gp/offer-listing/B079BKCT2T/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B079BKCT2T&linkCode=am2&tag=papertokensge-22&linkId=4249c5967f082d88fe8dc878f8875f7e">transparent dome circles</a> or
-      <img src="//ir-au.amazon-adsystem.com/e/ir?t=papertokensge-22&l=am2&o=36&a=B079BKCT2T" width="1" height="1" border="0" alt=""
-        style="border:none !important; margin:0px !important;" />
-      <a target="_blank" href="https://www.amazon.com.au/gp/offer-listing/B076H5CR3Z/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B076H5CR3Z&linkCode=am2&tag=papertokensge-22&linkId=efa7ab2287614afc31ebae465fa956e9">self-adhesive felt pads</a>!
-      <img src="//ir-au.amazon-adsystem.com/e/ir?t=papertokensge-22&l=am2&o=36&a=B076H5CR3Z" width="1" height="1" border="0" alt=""
-        style="border:none !important; margin:0px !important;" />
+      <a target="_blank" href="https://www.amazon.com.au/gp/offer-listing/B01E95PW2W/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B01E95PW2W&linkCode=am2&tag=papertokensge-22&linkId=6f3e7085e3b9c66e1f4dc034046a12d7">wooden
+        circles</a>, or even better,
+      <img src="//ir-au.amazon-adsystem.com/e/ir?t=papertokensge-22&l=am2&o=36&a=B01E95PW2W" width="1" height="1"
+        border="0" alt="" style="border:none !important; margin:0px !important;" />
+      <a target="_blank" href="https://www.amazon.com.au/gp/offer-listing/B079BKCT2T/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B079BKCT2T&linkCode=am2&tag=papertokensge-22&linkId=4249c5967f082d88fe8dc878f8875f7e">transparent
+        dome circles</a> or
+      <img src="//ir-au.amazon-adsystem.com/e/ir?t=papertokensge-22&l=am2&o=36&a=B079BKCT2T" width="1" height="1"
+        border="0" alt="" style="border:none !important; margin:0px !important;" />
+      <a target="_blank" href="https://www.amazon.com.au/gp/offer-listing/B076H5CR3Z/ref=as_li_tl?ie=UTF8&camp=247&creative=1211&creativeASIN=B076H5CR3Z&linkCode=am2&tag=papertokensge-22&linkId=efa7ab2287614afc31ebae465fa956e9">self-adhesive
+        felt pads</a>!
+      <img src="//ir-au.amazon-adsystem.com/e/ir?t=papertokensge-22&l=am2&o=36&a=B076H5CR3Z" width="1" height="1"
+        border="0" alt="" style="border:none !important; margin:0px !important;" />
     </p>
 
     <div class="instructions">
@@ -114,7 +118,8 @@
       <p>
         <strong>...You can add as many creatures as you want!</strong>
       </p>
-      <p>Don't forget to check the changelog at the bottom of the page, I consistently update and optimise the Paper Tokens
+      <p>Don't forget to check the changelog at the bottom of the page, I consistently update and optimise the Paper
+        Tokens
         Generator!
       </p>
     </div>
@@ -124,17 +129,26 @@
 
     <div id="donate">
       <p>
-        <strong>Paper Tokens Generator</strong> is a work in progress tool, so come back for new improvements and updates and
+        <strong>Paper Tokens Generator</strong> is a work in progress tool, so come back for new improvements and
+        updates and
         <strong>if you like this free tool and want to offer me a coffee</strong> press the cup ♥️
       </p>
-      <a target="_blank" href="http://PayPal.Me/AlbertoCamillo"><img width="120" src="./images/donate.png"/></a>  
+      <a target="_blank" href="http://PayPal.Me/AlbertoCamillo">
+        <img width="120" src="./images/donate.png" />
+      </a>
     </div>
-    
+
     <div class="wrap-collabsible">
       <input id="collapsible" class="toggle" type="checkbox">
       <label for="collapsible" class="lbl-toggle btn btn-primary btn-sm">Changelog</label>
       <div class="collapsible-content">
         <div class="content-inner">
+          <p>
+            <strong>20.01.2019</strong> Added bulk selection/deletion on desktop and also improved pawns layout when printing.
+          </p>
+          <p>
+            <strong>18.08.2018</strong> Added paper pawns! They're WIP and for now available from Tiny to Huge.
+          </p>
           <p>
             <strong>17.08.2018</strong> Improved table icons.
           </p>
@@ -142,11 +156,13 @@
             <strong>09.07.2018</strong> Now you can upload your images directly from Dropbox!
           </p>
           <p>
-            <strong>04.07.2018</strong> Made tokens and tent visibility optional. (You might need to reset the state of Count Start
+            <strong>04.07.2018</strong> Made tokens and tent visibility optional. (You might need to reset the state of
+            Count Start
             and Count in order to see the token correctly)
           </p>
           <p>
-            <strong>03.07.2018</strong> Added minimal Monster Tents, useful on a DM screen to keep track of initiative or the encounters.
+            <strong>03.07.2018</strong> Added minimal Monster Tents, useful on a DM screen to keep track of initiative
+            or the encounters.
           </p>
           <p>
             <strong>28.06.2018</strong> Improved image URL validation and fixed issue with tokens sizes when printing.
@@ -195,5 +211,8 @@
   </script>
 
 </body>
-
+<script>$(function() {
+  $("#tokens-table").stickyTableHeaders();
+});
+</script>
 </html>

@@ -19,7 +19,102 @@ const Table = (props) => {
                             <th>Count</th>
                             <th>Monster Tent</th>
                             <th>Token</th>
+                            <th>Paper Pawn</th>
                             <th>Delete</th>
+                        </tr>
+                        <tr id="bulk-selection">
+                            <th colSpan="5">Bulk Selection</th>
+                            <th>
+                                <div className="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label className="btn btn-primary">
+                                        <input
+                                            onClick={() => {
+                                            props.onUpdateAllTokensCountVisibility(false)
+                                        }}
+                                            type="checkbox"/>
+                                        <i className="fas fa-list-ol"></i>
+                                    </label>
+                                    <label className="btn btn-success">
+                                        <input
+                                            onClick={() => {
+                                            props.onUpdateAllTokensCountVisibility(true)
+                                        }}
+                                            type="checkbox"/>
+                                        <i className="fas fa-list-ol"></i>
+                                    </label>
+                                </div>
+                            </th>
+                            <th>
+                                <div className="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label className="btn btn-primary">
+                                        <input
+                                            onClick={() => {
+                                            props.onUpdateAllTokenTentsVisibility(false)
+                                        }}
+                                            type="checkbox"/>
+                                        <i className="far fa-map"></i>
+                                    </label>
+                                    <label className="btn btn-success">
+                                        <input
+                                            onClick={() => {
+                                            props.onUpdateAllTokenTentsVisibility(true)
+                                        }}
+                                            type="checkbox"/>
+                                        <i className="far fa-map"></i>
+                                    </label>
+                                </div>
+                            </th>
+                            <th>
+                                <div className="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label className="btn btn-primary">
+                                        <input
+                                            onClick={() => {
+                                            props.onUpdateAllTokensVisibility(false)
+                                        }}
+                                            type="checkbox"/>
+                                        <i className="fas fa-user-circle"></i>
+                                    </label>
+                                    <label className="btn btn-success">
+                                        <input
+                                            onClick={() => {
+                                            props.onUpdateAllTokensVisibility(true)
+                                        }}
+                                            type="checkbox"/>
+                                        <i className="fas fa-user-circle"></i>
+                                    </label>
+                                </div>
+                            </th>
+                            <th>
+                                <div className="btn-group btn-group-toggle" data-toggle="buttons">
+                                    <label className="btn btn-primary">
+                                        <input
+                                            onClick={() => {
+                                            props.onUpdateAllPawnsVisibility(false)
+                                        }}
+                                            type="checkbox"/>
+                                        <i className="fas fa-chess-pawn"></i>
+                                    </label>
+                                    <label className="btn btn-success">
+                                        <input
+                                            onClick={() => {
+                                            props.onUpdateAllPawnsVisibility(true)
+                                        }}
+                                            type="checkbox"/>
+                                        <i className="fas fa-chess-pawn"></i>
+                                    </label>
+                                </div>
+                            </th>
+                            <th>
+                                <button
+                                    type="button"
+                                    className="btn btn-warning"
+                                    onClick={() => {
+                                    if (window.confirm('Are you sure you wish to remove all the tokens?')) 
+                                        props.onRemoveAllTokens()
+                                }}>
+                                    <i className="fas fa-trash-alt"></i>
+                                </button>
+                            </th>
                         </tr>
                     </thead>
                     <tfoot></tfoot>
@@ -36,6 +131,7 @@ const Table = (props) => {
                                 onUpdateTokenCount={props.onUpdateTokenCount}
                                 onUpdateTokenTentVisibility={props.onUpdateTokenTentVisibility}
                                 onUpdateTokenVisibility={props.onUpdateTokenVisibility}
+                                onUpdatePawnVisibility={props.onUpdatePawnVisibility}
                                 onUpdateTokenCountStart={props.onUpdateTokenCountStart}
                                 onRemoveToken={props.onRemoveToken}/>))}
                     </tbody>
