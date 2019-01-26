@@ -485,6 +485,7 @@ html {
     page-break-before: none;
     page-break-after: none;
     page-break-inside: avoid; }
+  html #links-instructions,
   html #tokens-table,
   html #add-link-container,
   html button#remove-all,
