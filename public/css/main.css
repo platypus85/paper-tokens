@@ -26,7 +26,9 @@ html {
     html body h1 {
       font-family: "MrsEavesSmallCaps", Roboto, Helvetica, sans-serif;
       font-size: 30px;
-      color: #822000; }
+      color: #822000 a;
+        color-color: white !important;
+        color-text-decoration: none; }
     html body strong {
       font-weight: bold;
       color: #822000; }

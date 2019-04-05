@@ -51,6 +51,12 @@ html {
             font-family: "MrsEavesSmallCaps", Roboto, Helvetica, sans-serif;
             font-size: 30px;
             color: $primary-red
+            
+            a{
+                color: white !important;
+                text-decoration: none;
+            }
+            
         }
 
         strong {

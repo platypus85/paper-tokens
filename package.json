@@ -9,6 +9,7 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-dropbox-chooser": "0.0.5",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "sticky-table-headers": "^0.1.24",
     "webpack": "^3.11.0"
