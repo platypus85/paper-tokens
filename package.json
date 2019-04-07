@@ -6,6 +6,8 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "dom-to-image": "^2.6.0",
+    "file-saver": "^2.0.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-dropbox-chooser": "0.0.5",

@@ -4,7 +4,7 @@ import {AddToken} from './components/AddToken';
 import {Table} from './components/Table';
 import {Shape} from './components/Shape';
 import {Tokens} from './components/Tokens';
-
+import domtoimage from 'dom-to-image';
 class App extends Component {
 
   constructor(props) {
@@ -99,6 +99,7 @@ class App extends Component {
           shape={this.state.shape}
           tokens={this.state.tokens}
           onRemoveToken={this.removeToken}
+          onDownloadToken={this.downloadToken}
           onRemoveAllTokens={this.removeAllTokens}
           onUpdateAllPawnsVisibility={this.updateAllPawnsVisibility}
           onUpdateAllTokensVisibility={this.updateAllTokensVisibility}
@@ -123,6 +124,38 @@ class App extends Component {
         .tokens
         .filter((p) => p !== token)
     }))
+  }
+
+  downloadToken(node, name) {
+
+    var clone = node.cloneNode(true);
+    clone.setAttribute("style", "width: 4in; height: 4in;");
+    console.log(clone.hasChildNodes())
+    console.log(clone.childNodes)
+    if (clone.hasChildNodes() && clone.childNodes.length > 2) {
+      clone.removeChild(clone.childNodes[2])
+    }
+    document
+      .body
+      .appendChild(clone);
+
+    domtoimage
+      .toPng(clone)
+      .then(function (dataUrl) {
+        document
+          .body
+          .removeChild(clone)
+        var link = document.createElement('a');
+        link.download = name + '.png';
+        link.href = dataUrl;
+        link.click();
+      })
+      .catch(function(error){
+        alert("Token unavailable, please use a different image.")
+        document
+          .body
+          .removeChild(clone)
+      });
   }
 
   removeAllTokens() {
@@ -223,7 +256,7 @@ class App extends Component {
     }
 
     const token = {
-      id: Math.random(),
+      id: new Date().getTime(),
       url: tokenUrl,
       size: SizeEnum.MEDIUM,
       name: "Creature",

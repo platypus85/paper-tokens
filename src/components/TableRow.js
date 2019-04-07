@@ -10,7 +10,7 @@ const TableRow = (props) => {
                 className={"token-image " + (token.showToken
                 ? " "
                 : "greyscale")}>
-                <div className={"token medium " + ShapeEnum.properties[shape].name}>
+                <div id={token.id} className={"token medium " + ShapeEnum.properties[shape].name}>
                     <img alt={token.name} src={token.url}/> {token.count && <div className="number">#</div>}
                 </div>
             </td>
@@ -181,6 +181,17 @@ const TableRow = (props) => {
                         props.onRemoveToken(token)
                 }}>
                     <i className="fas fa-trash-alt"></i>
+                </button>
+            </td>
+            <td className="download-token">
+                <label className="mobile">Download token</label>
+                <button
+                    type="button"
+                    className="btn btn-info"
+                    onClick={() => { 
+                        props.onDownloadToken(document.getElementById(token.id),token.name)
+                    }}>
+                    <i className="fas fa-download"></i>
                 </button>
             </td>
         </tr>

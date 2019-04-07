@@ -21,6 +21,7 @@ const Table = (props) => {
                             <th>Token</th>
                             <th>Paper Pawn</th>
                             <th>Delete</th>
+                            <th>Download Token</th>
                         </tr>
                         <tr id="bulk-selection">
                             <th colSpan="5">Bulk Selection</th>
@@ -115,6 +116,9 @@ const Table = (props) => {
                                     <i className="fas fa-trash-alt"></i>
                                 </button>
                             </th>
+                            <th>
+                                
+                            </th>
                         </tr>
                     </thead>
                     <tfoot></tfoot>
@@ -133,7 +137,8 @@ const Table = (props) => {
                                 onUpdateTokenVisibility={props.onUpdateTokenVisibility}
                                 onUpdatePawnVisibility={props.onUpdatePawnVisibility}
                                 onUpdateTokenCountStart={props.onUpdateTokenCountStart}
-                                onRemoveToken={props.onRemoveToken}/>))}
+                                onRemoveToken={props.onRemoveToken}
+                                onDownloadToken={props.onDownloadToken}/>))}
                     </tbody>
                 </table>
                 {props.tokens.length > 0 && <div id="table-actions-container">
