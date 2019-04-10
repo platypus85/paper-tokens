@@ -129,7 +129,7 @@ class App extends Component {
   downloadToken(node, name) {
 
     var clone = node.cloneNode(true);
-    clone.setAttribute("style", "width: 4in; height: 4in;");
+    clone.setAttribute("style", "width: 4in; height: 4in; display: inline-block; position: absolute; visibility: hidden; zIndex: -1");
     console.log(clone.hasChildNodes())
     console.log(clone.childNodes)
     if (clone.hasChildNodes() && clone.childNodes.length > 2) {
