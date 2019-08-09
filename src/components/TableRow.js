@@ -48,7 +48,9 @@ const TableRow = (props) => {
                     onChange={(event) => props.onUpdateTokenQuantity(token, event.target.value)}
                     name="quantity"
                     defaultValue={token.quantity}
-                    min="1"/>
+                    min="1"
+                    max="99"
+                    maxlength="2"/>
             </td>
             <td className="token-startFrom">
                 <label className="mobile">Count Start:</label>
