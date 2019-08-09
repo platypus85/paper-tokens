@@ -9,7 +9,7 @@ const ShapeEnum = {
       name: "round"
     }
   }
-};
+}; 
 
 const DropboxLoadingStatusEnum = {
   LOADING: 0,
