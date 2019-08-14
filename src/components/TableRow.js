@@ -50,7 +50,7 @@ const TableRow = (props) => {
                     defaultValue={token.quantity}
                     min="1"
                     max="99"
-                    maxlength="2"/>
+                    maxLength="2"/>
             </td>
             <td className="token-startFrom">
                 <label className="mobile">Count Start:</label>
