@@ -2,8 +2,10 @@ $primary-background: white;
 $primary-red: #822000;
 $error: #ad0707;
 $defaultBorder: 1px solid #969696;
-$half-square: 0.6in;
+$half-square: 0.5in;
+$three-quarters-square: 0.75in;
 $one-square: 1in;
+$one-half-square: 1.5in;
 $two-square: 2in;
 $two-half-square: 2.5in;
 $three-square: 3in;
@@ -153,10 +155,8 @@ html {
 
             img {
                 position: absolute;
-                max-width: 100%;
-                max-height: 100%;
-                height: auto;
-                width: auto;
+                max-width: 95%;
+                max-height: 95%;
                 margin-left: auto;
                 margin-right: auto;
                 left: 0;
@@ -327,13 +327,12 @@ html {
                 overflow: hidden;
 
                 img {
-                    max-width: 100%;
-                    max-height: 100%;
+                    max-width: 95%;
+                    max-height: 95%;
                     object-fit: contain;
                     position: absolute;
                     left: 50%;
                     top: 50%;
-                    max-width: 100%;
                     margin: 0 auto;
                     z-index: -999;
                     -webkit-transform: translate(-50%, -50%);
@@ -402,13 +401,13 @@ html {
 
             &.tiny {
                 .pawn {
-                    width: $one-square;
-                    height: $one-square;
+                    width: $three-quarters-square;
+                    height: $three-quarters-square;
                 }
 
                 .base {
-                    width: $one-square;
-                    height: $half-square;
+                    width: $three-quarters-square;
+                    height: $three-quarters-square;
                 }
             }
 
@@ -420,19 +419,19 @@ html {
 
                 .base {
                     width: $one-square;
-                    height: $half-square;
+                    height: $one-square;
                 }
             }
 
             &.medium {
                 .pawn {
                     width: $one-square;
-                    height: $two-square;
+                    height: $one-half-square;
                 }
 
                 .base {
                     width: $one-square;
-                    height: $half-square;
+                    height: $one-square;
                 }
             }
 
@@ -445,7 +444,7 @@ html {
 
                 .base {
                     width: $two-square;
-                    height: $one-square;
+                    height: $two-square;
                 }
             }
 
@@ -457,7 +456,7 @@ html {
 
                 .base {
                     width: $three-square;
-                    height: $two-half-square;
+                    height: $three-square;
                 }
             }
 
