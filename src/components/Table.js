@@ -147,6 +147,7 @@ const Table = (props) => {
                         <i className="fas fa-print"></i>
                         &nbsp;Print
                     </button>
+                    <p>*In order to fit Large and Huge paper minis in a A4 page, I suggest to customise the margins when you print the PDF (5mm margins should be enough)</p>
                 </div>}
             </div>
         </div>
