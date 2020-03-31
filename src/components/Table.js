@@ -21,6 +21,7 @@ const Table = (props) => {
                             <th>Token</th>
                             <th>Paper Pawn</th>
                             <th>Delete</th>
+                            <th>Download</th>
                         </tr>
                         <tr id="bulk-selection">
                             <th colSpan="5">Bulk Selection</th>
@@ -115,6 +116,9 @@ const Table = (props) => {
                                     <i className="fas fa-trash-alt"></i>
                                 </button>
                             </th>
+                            <th>
+                               
+                            </th>
                         </tr>
                     </thead>
                     <tfoot></tfoot>
@@ -133,7 +137,9 @@ const Table = (props) => {
                                 onUpdateTokenVisibility={props.onUpdateTokenVisibility}
                                 onUpdatePawnVisibility={props.onUpdatePawnVisibility}
                                 onUpdateTokenCountStart={props.onUpdateTokenCountStart}
-                                onRemoveToken={props.onRemoveToken}/>))}
+                                onRemoveToken={props.onRemoveToken}
+                                onDownloadToken={props.onDownloadToken}
+                                />))}
                     </tbody>
                 </table>
                 {props.tokens.length > 0 && <div id="table-actions-container">
@@ -147,6 +153,14 @@ const Table = (props) => {
                         <i className="fas fa-print"></i>
                         &nbsp;Print
                     </button>
+                    <button
+                    type="button"
+                    className="btn btn-secondary btn-lg"
+                    id="doqwnload-all"
+                    onClick={() => {props.onDownloadAllTokens()}}>
+                    <i className="fas fa-download"></i>
+                    &nbsp;Download
+                </button>
                     <p>*In order to fit Large and Huge paper minis in a A4 page, I suggest to customise the margins when you print the PDF (5mm margins should be enough)</p>
                 </div>}
             </div>

@@ -4,6 +4,10 @@ import {AddToken} from './components/AddToken';
 import {Table} from './components/Table';
 import {Shape} from './components/Shape';
 import {Tokens} from './components/Tokens';
+import htmlToImage from 'html-to-image';
+import download from 'downloadjs';
+import {uuidByString} from './components/Utils'
+import {toggleNumber} from './components/Utils'
 
 class App extends Component {
 
@@ -56,6 +60,12 @@ class App extends Component {
       .bind(this);
     this.updatePawnVisibility = this
       .updatePawnVisibility
+      .bind(this);
+    this.downloadToken = this
+      .downloadToken
+      .bind(this);
+    this.downloadAllTokens = this
+      .downloadAllTokens
       .bind(this);
     this.state = {
       tokens: [],
@@ -111,7 +121,9 @@ class App extends Component {
           onUpdateTokenCount={this.updateTokenCountVisibility}
           onUpdateTokenTentVisibility={this.updateTokenTentVisibility}
           onUpdateTokenVisibility={this.updateTokenVisibility}
-          onUpdatePawnVisibility={this.updatePawnVisibility}/>
+          onUpdatePawnVisibility={this.updatePawnVisibility}
+          onDownloadToken={this.downloadToken}
+          onDownloadAllTokens={this.downloadAllTokens}/>
         <Tokens shape={this.state.shape} tokens={this.state.tokens}/>
       </div>
     );
@@ -328,6 +340,35 @@ class App extends Component {
     });
     this.setState({token: updatedTokensPawnsVisibility})
   }
+
+  downloadToken(token) {
+
+    try {
+
+      var tokenElement = document.getElementById(uuidByString(token.url));
+      // Make the number container inside tokenElement invisible
+      toggleNumber(tokenElement, "hidden");
+      console.log(tokenElement);
+
+      var bar = async(tokenElement) => {
+        await htmlToImage
+          .toPng(tokenElement)
+          .then(function (dataUrl) {
+            download(dataUrl, token.name.concat('.png'));
+          })
+          .then(function () {
+            toggleNumber(tokenElement, "visible");
+          });
+      }
+
+      bar(tokenElement);
+    } catch (err) {
+      // Make the number container inside tokenElement visible
+      toggleNumber(tokenElement, "visible");
+    }
+  }
+
+  downloadAllTokens() {}
 
   updateAllPawnsVisibility(value) {
     let updatedTokensPawnsVisibility = this

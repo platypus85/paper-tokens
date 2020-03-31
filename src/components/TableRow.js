@@ -1,5 +1,6 @@
 import React from 'react';
 import {ShapeEnum, SizeEnum} from '../constants/Enums';
+import {uuidByString} from './Utils'
 
 const TableRow = (props) => {
     const token = props.token;
@@ -10,7 +11,9 @@ const TableRow = (props) => {
                 className={"token-image " + (token.showToken
                 ? " "
                 : "greyscale")}>
-                <div className={"token medium " + ShapeEnum.properties[shape].name}>
+                <div
+                    id={uuidByString(token.url)}
+                    className={"token medium " + ShapeEnum.properties[shape].name}>
                     <img alt={token.name} src={token.url}/> {token.count && <div className="number">#</div>}
                 </div>
             </td>
@@ -183,6 +186,17 @@ const TableRow = (props) => {
                         props.onRemoveToken(token)
                 }}>
                     <i className="fas fa-trash-alt"></i>
+                </button>
+            </td>
+            <td className="delete">
+                <label className="mobile">Download token:</label>
+                <button
+                    type="button"
+                    className="btn btn-warning"
+                    onClick={() => {
+                    props.onDownloadToken(token)
+                }}>
+                    <i className="fas fa-download"></i>
                 </button>
             </td>
         </tr>
