@@ -9,7 +9,7 @@
     "downloadjs": "^1.4.7",
     "html-to-image": "^0.1.1",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.13.1",
     "react-dropbox-chooser": "0.0.5",
     "react-scripts": "1.1.4",
     "sticky-table-headers": "^0.1.24",
