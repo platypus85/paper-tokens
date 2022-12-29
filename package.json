@@ -11,10 +11,10 @@
     "react": "^16.4.1",
     "react-dom": "^16.13.1",
     "react-dropbox-chooser": "0.0.5",
-    "react-scripts": "1.1.4",
+    "react-scripts": "5.0.1",
     "sticky-table-headers": "^0.1.24",
     "uuid-by-string": "^3.0.2",
-    "webpack": "^3.11.0"
+    "webpack": "^5.75.0"
   },
   "scripts": {
     "start": "react-scripts start",
